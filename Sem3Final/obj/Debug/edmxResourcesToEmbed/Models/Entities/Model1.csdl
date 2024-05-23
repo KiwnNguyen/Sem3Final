@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbSem3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="id_question" Type="Int32" />
+    <Property Name="is_correct" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Question" Relationship="Self.FK__Answer__id_quest__4BAC3F29" FromRole="Answer" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="Cadidate">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_member" Type="Int32" />
+    <Property Name="id_vacancy" Type="Int32" />
+    <Property Name="concern_person" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="score" Type="Int32" />
+    <Property Name="answer_of_cadidate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="submit_cadidate_cadidate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Member" Relationship="Self.FK__Cadidates__id_me__4D94879B" FromRole="Cadidates" ToRole="Member" />
+    <NavigationProperty Name="Vacancy" Relationship="Self.FK__Cadidates__id_va__4E88ABD4" FromRole="Cadidates" ToRole="Vacancies" />
+  </EntityType>
+  <EntityType Name="CategoryOfQuestion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK__Question__id_cat__4AB81AF0" FromRole="CategoryOfQuestion" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Dname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Vacancies" Relationship="Self.FK__Vacancies__id_de__4CA06362" FromRole="Departments" ToRole="Vacancies" />
+  </EntityType>
+  <EntityType Name="Examination">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="QuestionOfExaminations" Relationship="Self.FK__QuestionO__id_ex__49C3F6B7" FromRole="Examination" ToRole="QuestionOfExamination" />
+    <NavigationProperty Name="Vacancies" Relationship="Self.FK__Vacancies__id_ex__48CFD27E" FromRole="Examination" ToRole="Vacancies" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="cv" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="education_details" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="personal_details" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="work_experience" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="images" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Cadidates" Relationship="Self.FK__Cadidates__id_me__4D94879B" FromRole="Member" ToRole="Cadidates" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="id_categoryofquestion" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK__Answer__id_quest__4BAC3F29" FromRole="Question" ToRole="Answer" />
+    <NavigationProperty Name="CategoryOfQuestion" Relationship="Self.FK__Question__id_cat__4AB81AF0" FromRole="Question" ToRole="CategoryOfQuestion" />
+    <NavigationProperty Name="QuestionOfExaminations" Relationship="Self.FK__QuestionO__id_qu__4F7CD00D" FromRole="Question" ToRole="QuestionOfExamination" />
+  </EntityType>
+  <EntityType Name="QuestionOfExamination">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_question" Type="Int32" />
+    <Property Name="id_examination" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Examination" Relationship="Self.FK__QuestionO__id_ex__49C3F6B7" FromRole="QuestionOfExamination" ToRole="Examination" />
+    <NavigationProperty Name="Question" Relationship="Self.FK__QuestionO__id_qu__4F7CD00D" FromRole="QuestionOfExamination" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="Vacancy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="quantity_emp" Type="Int32" />
+    <Property Name="id_examination" Type="Int32" />
+    <Property Name="id_dep" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="salary" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="dateline" Type="DateTime" Precision="0" />
+    <Property Name="jobnature" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="featured" Type="Int32" />
+    <NavigationProperty Name="Cadidates" Relationship="Self.FK__Cadidates__id_va__4E88ABD4" FromRole="Vacancies" ToRole="Cadidates" />
+    <NavigationProperty Name="Department" Relationship="Self.FK__Vacancies__id_de__4CA06362" FromRole="Vacancies" ToRole="Departments" />
+    <NavigationProperty Name="Examination" Relationship="Self.FK__Vacancies__id_ex__48CFD27E" FromRole="Vacancies" ToRole="Examination" />
+  </EntityType>
+  <Association Name="FK__Answer__id_quest__4BAC3F29">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="id_question" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cadidates__id_me__4D94879B">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="Cadidates" Type="Self.Cadidate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cadidates">
+        <PropertyRef Name="id_member" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cadidates__id_va__4E88ABD4">
+    <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="0..1" />
+    <End Role="Cadidates" Type="Self.Cadidate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vacancies">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cadidates">
+        <PropertyRef Name="id_vacancy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Question__id_cat__4AB81AF0">
+    <End Role="CategoryOfQuestion" Type="Self.CategoryOfQuestion" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryOfQuestion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="id_categoryofquestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vacancies__id_de__4CA06362">
+    <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vacancies">
+        <PropertyRef Name="id_dep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QuestionO__id_ex__49C3F6B7">
+    <End Role="Examination" Type="Self.Examination" Multiplicity="0..1" />
+    <End Role="QuestionOfExamination" Type="Self.QuestionOfExamination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Examination">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="QuestionOfExamination">
+        <PropertyRef Name="id_examination" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vacancies__id_ex__48CFD27E">
+    <End Role="Examination" Type="Self.Examination" Multiplicity="0..1" />
+    <End Role="Vacancies" Type="Self.Vacancy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Examination">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vacancies">
+        <PropertyRef Name="id_examination" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QuestionO__id_qu__4F7CD00D">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="QuestionOfExamination" Type="Self.QuestionOfExamination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="QuestionOfExamination">
+        <PropertyRef Name="id_question" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbSem3Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Answers" EntityType="Self.Answer" />
+    <EntitySet Name="Cadidates" EntityType="Self.Cadidate" />
+    <EntitySet Name="CategoryOfQuestions" EntityType="Self.CategoryOfQuestion" />
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="Examinations" EntityType="Self.Examination" />
+    <EntitySet Name="Members" EntityType="Self.Member" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="QuestionOfExaminations" EntityType="Self.QuestionOfExamination" />
+    <EntitySet Name="Vacancies" EntityType="Self.Vacancy" />
+    <AssociationSet Name="FK__Answer__id_quest__4BAC3F29" Association="Self.FK__Answer__id_quest__4BAC3F29">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cadidates__id_me__4D94879B" Association="Self.FK__Cadidates__id_me__4D94879B">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="Cadidates" EntitySet="Cadidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cadidates__id_va__4E88ABD4" Association="Self.FK__Cadidates__id_va__4E88ABD4">
+      <End Role="Vacancies" EntitySet="Vacancies" />
+      <End Role="Cadidates" EntitySet="Cadidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Question__id_cat__4AB81AF0" Association="Self.FK__Question__id_cat__4AB81AF0">
+      <End Role="CategoryOfQuestion" EntitySet="CategoryOfQuestions" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vacancies__id_de__4CA06362" Association="Self.FK__Vacancies__id_de__4CA06362">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Vacancies" EntitySet="Vacancies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QuestionO__id_ex__49C3F6B7" Association="Self.FK__QuestionO__id_ex__49C3F6B7">
+      <End Role="Examination" EntitySet="Examinations" />
+      <End Role="QuestionOfExamination" EntitySet="QuestionOfExaminations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vacancies__id_ex__48CFD27E" Association="Self.FK__Vacancies__id_ex__48CFD27E">
+      <End Role="Examination" EntitySet="Examinations" />
+      <End Role="Vacancies" EntitySet="Vacancies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QuestionO__id_qu__4F7CD00D" Association="Self.FK__QuestionO__id_qu__4F7CD00D">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="QuestionOfExamination" EntitySet="QuestionOfExaminations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

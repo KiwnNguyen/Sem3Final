@@ -1,0 +1,143 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|c:\\users\\dat vo\\documents\\github\\sem3final\\sem3final\\models\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|solutionrelative:sem3final\\models\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|c:\\users\\dat vo\\documents\\github\\sem3final\\sem3final\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|solutionrelative:sem3final\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|c:\\users\\dat vo\\documents\\github\\sem3final\\sem3final\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|solutionrelative:sem3final\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|c:\\users\\dat vo\\documents\\github\\sem3final\\sem3final\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|solutionrelative:sem3final\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\sem3final\\models\\repositories\\candidaterepositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|solutionrelative:sem3final\\models\\repositories\\candidaterepositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|c:\\users\\dat vo\\documents\\github\\sem3final\\sem3final\\models\\repositories\\answerrepositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|solutionrelative:sem3final\\models\\repositories\\answerrepositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\sem3final\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{77FF43DC-A3C3-4EB3-A831-45141336DD56}|Sem3Final\\Sem3Final.csproj|solutionrelative:sem3final\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Models\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "Sem3Final\\Models\\Repositories\\Repository.cs",
+              "ToolTip": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Models\\Repositories\\Repository.cs",
+              "RelativeToolTip": "Sem3Final\\Models\\Repositories\\Repository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T13:58:47.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "Sem3Final\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "Sem3Final\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T13:57:55.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Sem3Final\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Sem3Final\\Controllers\\AdminController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T13:57:55.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Sem3Final\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Sem3Final\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T13:57:53.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CandidateRepositories.cs",
+              "DocumentMoniker": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Models\\Repositories\\CandidateRepositories.cs",
+              "RelativeDocumentMoniker": "Sem3Final\\Models\\Repositories\\CandidateRepositories.cs",
+              "ToolTip": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Models\\Repositories\\CandidateRepositories.cs",
+              "RelativeToolTip": "Sem3Final\\Models\\Repositories\\CandidateRepositories.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAowA4AAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T14:41:22.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AnswerRepositories.cs",
+              "DocumentMoniker": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Models\\Repositories\\AnswerRepositories.cs",
+              "RelativeDocumentMoniker": "Sem3Final\\Models\\Repositories\\AnswerRepositories.cs",
+              "ToolTip": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Models\\Repositories\\AnswerRepositories.cs",
+              "RelativeToolTip": "Sem3Final\\Models\\Repositories\\AnswerRepositories.cs",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAowIAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T14:33:30.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Web.config",
+              "RelativeDocumentMoniker": "Sem3Final\\Web.config",
+              "ToolTip": "C:\\Users\\dat vo\\Documents\\GitHub\\Sem3Final\\Sem3Final\\Web.config",
+              "RelativeToolTip": "Sem3Final\\Web.config",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAEUAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-05-23T14:30:39.568Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
