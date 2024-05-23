@@ -7,5 +7,9 @@ namespace Sem3Final.Models.Repositories
 {
     public class Repository
     {
+        public void t()
+        {
+
+        }
     }
 }
