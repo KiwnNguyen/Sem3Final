@@ -1,6 +1,6 @@
-﻿using Accord.IO;
-using AccpSem3.Models.Entities;
-using AccpSem3.Models.ModeView;
+﻿
+using Sem3Final.Models.Entities;
+using Sem3Final.Models.ModelsView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +16,14 @@ namespace AccpSem3.Models.Repository
         {
             get
             {
-                if(instance == null)
+                if (instance == null)
                 {
                     instance = new CandidateRepositories();
-                }  
+                }
                 return instance;
             }
         }
-        public void UpdateCadi(int id,int score1,string listAnswer, string listAnswer_of_cadidate)
+        public void UpdateCadi(int id, int score1, string listAnswer, string listAnswer_of_cadidate)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace AccpSem3.Models.Repository
                 {
                     if (score1 != 0 && listAnswer != null)
                     {
-              
+
                         using (dbSem3Entities entities = new dbSem3Entities())
                         {
                             var cadidate = entities.Cadidates.Find(id);
@@ -54,10 +54,32 @@ namespace AccpSem3.Models.Repository
             }
 
         }
+        public void SubmitSendInfo(CadidateView model)
+        {
+            try
+            {
+                if (model != null)
+                {
+                    Cadidate cadi = new Cadidate();
+                    dbSem3Entities entities = new dbSem3Entities();
+                    cadi.id_member = model.id_member;
+                    cadi.id_vacancy = model.id_vacancy;
+                    cadi.created_at = DateTime.Now;
+                    cadi.updated_at = DateTime.Now;
+                    entities.Cadidates.Add(cadi);
+                    entities.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         public List<CadidateView> GetById(string username1)
         {
-            try{
-                
+            try
+            {
+
                 dbSem3Entities entities = new dbSem3Entities();
                 var q = entities.Cadidates.Where(y => y.username == username1).ToList();
 

@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "PageViewDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<Sem3Final.Models.ModelsView.VacanciesView> ls = new List<Sem3Final.Models.ModelsView.VacanciesView>();
+    if (ViewBag.VanciesDetail != null)
+    {
+        ls = ViewBag.VanciesDetail;
+    }
+    int index = 1;
+}
+
+<main class="content-wrapper">
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card p-0">
+                    <h6 class="card-title card-padding pb-0">Vancacies Table</h6>
+                    <div class="table-responsive">
+                        <table class="table table-hoverable">
+                            <thead>
+                                <tr>
+                                    <th>Decription</th>
+                                    <th>Quantity of recruitment</th>
+                                    <th>View Examine</th>
+                                    <th>View Depart</th>
+                                    <th>Salary</th>
+                                    <th>Datelines</th>
+                                    <th>Jobnature</th>
+                                    <th>Featured</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Sem3Final.Models.ModelsView.VacanciesView item in ls)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input value="@item.description" id="cv_cadi_@index" name="cv_" style="display: none" />
+                                            <button class="btn btn-primary" type="button" onclick="openDialog(@index)">
+
+                                                <i class="fa-solid fa-audio-description"></i>
+                                            </button>
+                                        </td>
+                                        <td>@item.quantity_emp</td>
+                                        <td>  <a href="@Url.Action("PageViewDetailExa","Admin",new {id = item.id_examination})"><i class="fas fa-eye"></i></a></td>
+                                        <td>  <a href="@Url.Action("PageViewDetailDepart","Admin",new {id = item.id_dep})"><i class="fas fa-eye"></i></a></td>
+                                        <td>@item.salary</td>
+                                        <td>@item.dateline</td>
+                                        <td>
+                                            <input value="@item.jobnature" id="cv_cadi1_@index" name="cv_" style="display: none" />
+                                            <button class="btn btn-primary" type="button" onclick="openDialog1(@index)">
+                                                View Details
+                                            </button>
+                                        </td>
+                                        <td>@item.featured</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+
+

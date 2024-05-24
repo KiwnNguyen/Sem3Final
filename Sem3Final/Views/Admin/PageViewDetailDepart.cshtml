@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "PageViewDetailDepart";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<Sem3Final.Models.ModelsView.DepartmentView> ls = new List<Sem3Final.Models.ModelsView.DepartmentView>();
+    if (ViewBag.DepDetail != null)
+    {
+        ls = ViewBag.DepDetail;
+    }
+}
+
+<main class="content-wrapper">
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card p-2">
+                    <h6 class="card-title card-padding pb-0">Department Detail</h6>
+                    <div class="table-responsive">
+                        <table class="table table-hoverable">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name Depart</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Sem3Final.Models.ModelsView.DepartmentView item in ls)
+                                {
+                                    <tr>
+                                        <td>#</td>
+                                        <td>@item.Dname</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "ResultCadi";
+}
+
+<h2>Chi tiết kết quả bài thi thử phỏng vừa rồi của bạn</h2>
+
+@if (HttpContext.Current.Session["ScorePhanI"] != null)
+{
+    <h4>phần I: @HttpContext.Current.Session["ScorePhanI"] đúng câu</h4>
+
+}
+@if (HttpContext.Current.Session["ScorePhanII"] != null)
+{
+    <h4>phần II: @HttpContext.Current.Session["ScorePhanII"] đúng câu</h4>
+
+}
+@if (HttpContext.Current.Session["ScorePhanIII"] != null)
+{
+    <h4>phần III: @HttpContext.Current.Session["ScorePhanIII"] đúng câu</h4>
+
+}
+@if (HttpContext.Current.Session["ScoreCadi"] != null)
+{
+    <h3>+ Tổng số điểm: @HttpContext.Current.Session["ScoreCadi"]</h3>
+
+}

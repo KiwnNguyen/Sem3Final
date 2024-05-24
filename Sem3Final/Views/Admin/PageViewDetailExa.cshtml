@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "PageViewDetailExa";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<Sem3Final.Models.ModelsView.ExamineView> ls = new List<Sem3Final.Models.ModelsView.ExamineView>();
+    if (ViewBag.ExaDetail != null)
+    {
+        ls = ViewBag.ExaDetail;
+    }
+}
+
+<main class="content-wrapper">
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card p-0">
+                    <h6 class="card-title card-padding pb-0">Examine Details</h6>
+                    <div class="table-responsive">
+                        <table class="table table-hoverable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Create Date</th>
+                                    <th>Update Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (AccpSem3.Models.ModeView.ExamineView item in ls)
+                                {
+                                    <tr>
+                                        <td></td>
+                                        <td>@item.title</td>
+                                        <td>@item.created_at</td>
+                                        <td>@item.updated_at</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+

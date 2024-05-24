@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AccpSem3.Models.ModeView
+namespace Sem3Final.Models.ModelsView
 {
     public class AnswerView
     {

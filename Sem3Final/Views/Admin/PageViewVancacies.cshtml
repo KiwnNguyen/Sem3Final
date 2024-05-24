@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "PageViewVancacies";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<Sem3Final.Models.ModelsView.VacanciesView> ls = new List<Sem3Final.Models.ModelsView.VacanciesView>();
+
+    if (ViewBag.Vanciest != null)
+    {
+        ls = ViewBag.Vanciest;
+    }
+    int index = 1;
+}
+
+<main class="content-wrapper">
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card p-0">
+                    <h6 class="card-title card-padding pb-0" style="text-align: center">Vancacies Table</h6>
+                    <a class="mdc-button mdc-button--raise filled-button--warning" href="@Url.Action("PageAddVancacies","Admin")">Add Vancacies <i class="material-icons">add</i></a>
+                    <div class="table-responsive">
+                        <table class="table table-hoverable">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">STT</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Create date</th>
+                                    <th>Update date</th>
+                                    <th>View Details</th>
+                                    <th>Edit</th>
+                                    <th>Open/Close</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Sem3Final.Models.ModelsView.VacanciesView item in ls)
+                                {
+                                    <tr>
+                                        <td class="text-left">@index</td>
+                                        <td>@item.name</td>
+                                        <td>
+                                            @if (@item.status == "open")
+                                            {
+                                                <p style="color: green">Open</p>
+                                            }
+                                            @if (@item.status == "close")
+                                            {
+                                                <p style="color: red">Close</p>
+                                            }
+
+                                        </td>
+                                        <td>@item.created_at</td>
+                                        <td>@item.updated_at</td>
+                                        <td>
+                                            <a href="@Url.Action("PageViewDetails","Admin",new {id = item.id})"><i class="fas fa-eye"></i></a>
+                                        </td>
+                                        <td>
+                                            <a class="button-with-icon" id="" href="@Url.Action("PageUpdateVancies","Admin",new {id = item.id})">
+                                                <i class="fa-solid fa-pen-to-square"></i> <!-- Biểu tượng cho trạng thái Bật -->
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <form action="/Admin/UpdateStatusVan" method="post">
+                                                <input value="@item.id" name="id_vanca" style="display:none" id="id1" />
+                                                <input value="@item.status" name="sta_van" style="display:none" id="status1" />
+                                                <button class="button-with-icon" id="submitButton">
+                                                    @if (item.status == "open")
+                                                    {
+
+                                                        <i class="fas fa-power-off power-on"></i> <!-- Biểu tượng cho trạng thái Bật -->
+                                                    }
+                                                    @if (item.status == "close")
+                                                    {
+                                                        <i class="fas fa-power-off power-off"></i> <!-- Biểu tượng cho trạng thái Tắt -->
+                                                    }
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+

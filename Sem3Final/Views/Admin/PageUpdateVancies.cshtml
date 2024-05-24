@@ -1,0 +1,71 @@
+﻿@model Sem3Final.Models.ModelsView.VacanciesView
+@{
+    ViewBag.Title = "PageUpdateVancies";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell--span-12">
+            <div class="mdc-card">
+                <h6 class="card-title">Add Vancacies</h6>
+                <div class="template-demo">
+                    <form action="/Admin/SubmitEditVancies" method="post" enctype="multipart/form-data" id="frmData">
+                        <div class="mdc-layout-grid__inner">
+                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                                <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
+                                    <label for="" class="mdc-floating-label">DateLines: </label>
+                                    <input type="text" name="id" value="@ViewBag.id" style="display: none" />
+                                    <input type="text" id="basic-default-datetime" class="mdi-camera-timer" name="date_time" data-flatpickr="datetime" value="@ViewBag.dateline1 @Model.dateline" style="border-radius:10px; width: 480px; text-align:center">
+                                </div>
+                            </div>
+                            <div class="input-group input-group-sm mb-3  mdc-layout-grid__cell--span-6-desktop">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Salary</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" style="border-radius: 10px; width: 470px ; height: 40px; text-align:center" name="salary" value="@ViewBag.salary1 @Model.salary">
+                            </div>
+                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                                <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
+                                    <label for="" class="mdc-floating-label">Jobnature: </label>
+                                    <select name="jobnature" id="jobnature" class="mdc-select--focused" style="border-radius: 10px; width: 480px; text-align:center">
+                                        <option value="fulltime">FullTime</option>
+                                        <option value="partTime">PartTime</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                                <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
+                                    <label for="" class="mdc-floating-label">Featured: </label>
+                                    <select name="featured" id="featured" class="mdc-select--focused" style="border-radius: 10px; width: 480px; text-align:center">
+                                        <option value="1">Nổi bật</option>
+                                        <option value="2">Không nổi bật</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group input-group-sm mb-3  mdc-layout-grid__cell--span-6-desktop">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Quantity of cursiment</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" style="border-radius: 10px; width: 470px ; height: 40px; text-align:center" name="quantity_emp" value="@ViewBag.quantity @Model.quantity_emp">
+                            </div>
+                            <div class="input-group input-group-sm mb-3  mdc-layout-grid__cell--span-6-desktop">
+                            </div>
+                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-5-desktop">
+                                <div id="editor">
+
+                                </div>
+                                <input type="hidden" id="myData" name="myData" value="" />
+                            </div>
+                        </div><br />
+                        <button type="submit" id="btnSave" class="btn-primary accordion-button">Send</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

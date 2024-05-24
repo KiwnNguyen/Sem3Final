@@ -1,39 +1,1575 @@
 ﻿<!DOCTYPE html>
-<html>
+
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8">
+    <title>JobEntry - Job Portal Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="~/Content/Assets/Client/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/Content/Assets/Client/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/Content/Assets/Client/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/Content/Assets/Client/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="~/Content/Assets/Client/css/style.css" rel="stylesheet">
+    <style>
+        .question-answer-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .question,
+        {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+            .question h3,
+            {
+                font-size: 18px;
+                margin-bottom: 5px;
+            }
+
+            .question p,
+            {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+        .page-content {
+            font-size: 15px;
+            font-display: block;
+            text-align: center;
+            left: 50%;
+            transform: translate(40%, 0%);
+        }
+
+        .page-content1 {
+            font-size: 15px;
+            font-display: block;
+            text-align: center;
+            left: 50%;
+            transform: translate(40%, 0%);
+        }
+
+        .page-content2 {
+            font-size: 15px;
+            font-display: block;
+            text-align: center;
+            left: 50%;
+            transform: translate(40%, 0%);
+        }
+
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .dialog-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+        }
+
+        .dialog-overlay1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .dialog-content1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+        }
+
+        .dialog-overlay2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .dialog-content2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+        }
+
+        .dialog-overlay3 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .dialog-content3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+        }
+
+        .dialog-overlay4 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .dialog-content4 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+        }
+
+        .dialog-overlay5 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .dialog-content5 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+        }
+    </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
         </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
+        <!-- Spinner End -->
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+            <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+                <h1 class="m-0 text-primary">The Webster</h1>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="/home/index" class="nav-item nav-link">Home</a>
+                    <a href="/home/about" class="nav-item nav-link">About</a>
+                    <a href="/home/contact" class="nav-item nav-link">Contact</a>
+                    @if (HttpContext.Current.Session["AccountNameCadidate"] != null)
+                    {
+                        <a href="/Home/FormTestCadi" class="nav-item nav-link">Test Cadidates</a>
+
+                    }
+                    @if (HttpContext.Current.Session["AccountNameCadidate"] != null && HttpContext.Current.Session["idStatusCadi"].Equals(0))
+                    {
+                        <a href="/Home/PageHistoryCadi" class="nav-item nav-link">Page Score History</a>
+
+                    }
+
+                </div>
+                @if (HttpContext.Current.Session["AccountName"] == null || HttpContext.Current.Session["AccountNameAdmin"] == null || HttpContext.Current.Session["AccountNameCadidate"] == null)
+                {
+                    <a href="/Login/PageLogin" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login</a>
+
+                }
+                @if (HttpContext.Current.Session["AccountName"] != null || HttpContext.Current.Session["AccountNameAdmin"] != null || HttpContext.Current.Session["AccountNameCadidate"] != null)
+                {
+                    <a href="/Login/LogOut" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Logout</a>
+
+                }
+
+            </div>
+        </nav>
+        <!-- Navbar End -->
+        <!-- Header End -->
+        <div class="container-xxl py-5 bg-dark page-header mb-5">
+            <div class="container my-5 pt-5 pb-4">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Job List</h1>
+            </div>
+        </div>
+        <!-- Header End -->
+        <!-- Search Start -->
+        <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+            <div class="container">
+                <div class="row g-2">
+                    <div class="col-md-10">
+                        <div class="row g-2">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control border-0" placeholder="Keyword" />
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select border-0">
+                                    <option selected>Category</option>
+                                    <option value="1">Category 1</option>
+                                    <option value="2">Category 2</option>
+                                    <option value="3">Category 3</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select border-0">
+                                    <option selected>Location</option>
+                                    <option value="1">Location 1</option>
+                                    <option value="2">Location 2</option>
+                                    <option value="3">Location 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-dark border-0 w-100">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search End -->
+        h     @RenderBody()
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Company</h5>
+                        <a class="btn btn-link text-white-50" href="">About Us</a>
+                        <a class="btn btn-link text-white-50" href="">Contact Us</a>
+                        <a class="btn btn-link text-white-50" href="">Our Services</a>
+                        <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
+                        <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Quick Links</h5>
+                        <a class="btn btn-link text-white-50" href="">About Us</a>
+                        <a class="btn btn-link text-white-50" href="">Contact Us</a>
+                        <a class="btn btn-link text-white-50" href="">Our Services</a>
+                        <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
+                        <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Contact</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Newsletter</h5>
+                        <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <div class="footer-menu">
+                                <a href="">Home</a>
+                                <a href="">Cookies</a>
+                                <a href="">Help</a>
+                                <a href="">FQAs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/Assets/Client/lib/wow/wow.min.js"></script>
+    <script src="~/Content/Assets/Client/lib/easing/easing.min.js"></script>
+    <script src="~/Content/Assets/Client/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/Content/Assets/Client/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    @*<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>*@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+
+        var currentPage = 0; // Trang Page
+        var currentPage1 = 0;
+        var currentPage2 = 0;// Trang Page1
+
+        var answers = {};//lưu các giá trị được chọn
+        var answers1 = {};
+
+        //Test
+        var pages = [];
+        var pages1 = [];
+        var pages2 = [];
+
+        var data3 = "";
+
+        $.ajax({
+            url: '/Home/GetData',
+            type: 'GET',
+            success: function (response) {
+                var data = response.Data; // Dữ liệu từ data
+                var data1 = response.Data1;
+                var data2 = response.Data2;
+                var data4 = response.Data4;
+               data3 = response.Data3;
+                //console.log(data);
+                //console.log(data1);
+                //console.log(data2);
+                //console.log(data3);
+                console.log("hello");
+                console.log(data4);
+                if (data3[0].status == 1) {
+                    pages = [
+                        "<div id='question2'><h4>Phân I: Kiến thức chung</h4><br><br>"
+                        + "<h4 > Câu hỏi 1: " + data[0].title + "</h4 > "
+                        + "<input type='radio' name='answer1' id='page1' value='" + data[0].title_answer + "'><label> A." + data[0].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer1'id='page1' value='" + data[1].title_answer + "'><label> B." + data[1].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer1'id='page1' value='" + data[2].title_answer + "'><label> c." + data[2].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer1' id='page1'value='" + data[3].title_answer + "'><label> D." + data[3].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 2: " + data[4].title + "</h4 > "
+                        + "<input type='radio' name='answer2'id='page1' value='" + data[4].title_answer + "'><label> A." + data[4].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer2' id='page1'value='" + data[5].title_answer + "'><label> B." + data[5].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer2' id='page1'value='" + data[6].title_answer + "'><label> c." + data[6].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer2' id='page1'value='" + data[7].title_answer + "'><label> D." + data[7].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 3: " + data[8].title + "</h4 > "
+                        + "<input type='radio' name='answer3' id='page1'value='" + data[8].title_answer + "'><label> A." + data[8].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer3'id='page1' value='" + data[9].title_answer + "'><label> B." + data[9].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer3'id='page1' value='" + data[10].title_answer + "'><label> c." + data[10].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer3'id='page1' value='" + data[11].title_answer + "'><label> D." + data[11].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 4: " + data[12].title + "</h4 > "
+                        + "<input type='radio' name='answer4'id='page1' value='" + data[12].title_answer + "'><label> A." + data[12].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer4'id='page1' value='" + data[13].title_answer + "'><label> B." + data[13].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer4'id='page1' value='" + data[14].title_answer + "'><label> c." + data[14].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer4'id='page1' value='" + data[15].title_answer + "'><label> D." + data[15].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 5: " + data[16].title + "</h4 > "
+                        + "<input type='radio' name='answer5'id='page1' value='" + data[16].title_answer + "'><label> A." + data[16].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer5'id='page1' value='" + data[17].title_answer + "'><label> B." + data[17].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer5'id='page1' value='" + data[18].title_answer + "'><label> c." + data[18].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer5'id='page1' value='" + data[19].title_answer + "'><label> D." + data[19].title_answer + "</label><br><br>"
+                        + "</div > ",
+
+
+
+
+                    ]; // Danh sách các trang phần I
+                    pages1 = [
+                        "<div id='question2'><h4>Phân II: Toán học</h4><br><br>"
+                        + "<h4 > Câu hỏi 1: " + data1[0].title + "</h4 > "
+                        + "<input type='radio' name='answer6' id='page1' value='" + data1[0].title_answer + "'><label> A." + data1[0].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer6'id='page1' value='" + data1[1].title_answer + "'><label> B." + data1[1].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer6'id='page1' value='" + data1[2].title_answer + "'><label> c." + data1[2].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer6' id='page1' value='" + data1[3].title_answer + "'><label> D." + data1[3].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 2: " + data1[4].title + "</h4 > "
+                        + "<input type='radio' name='answer7'id='page1' value='" + data1[4].title_answer + "'><label> A." + data1[4].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer7' id='page1'value='" + data1[5].title_answer + "'><label> B." + data1[5].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer7' id='page1'value='" + data1[6].title_answer + "'><label> c." + data1[6].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer7' id='page1'value='" + data1[7].title_answer + "'><label> D." + data1[7].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 3: " + data1[8].title + "</h4 > "
+                        + "<input type='radio' name='answer8' id='page1'value='" + data1[8].title_answer + "'><label> A." + data1[8].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer8'id='page1' value='" + data1[9].title_answer + "'><label> B." + data1[9].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer8'id='page1' value='" + data1[10].title_answer + "'><label> c." + data1[10].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer8'id='page1' value='" + data1[11].title_answer + "'><label> D." + data1[11].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 4: " + data1[12].title + "</h4 > "
+                        + "<input type='radio' name='answer9'id='page1' value='" + data1[12].title_answer + "'><label> A." + data1[12].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer9'id='page1' value='" + data1[13].title_answer + "'><label> B." + data1[13].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer9'id='page1' value='" + data1[14].title_answer + "'><label> c." + data1[14].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer9'id='page1' value='" + data1[15].title_answer + "'><label> D." + data1[15].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 5: " + data1[16].title + "</h4 > "
+                        + "<input type='radio' name='answer10'id='page1' value='" + data1[16].title_answer + "'><label> A." + data1[16].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer10'id='page1' value='" + data1[17].title_answer + "'><label> B." + data1[17].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer10'id='page1' value='" + data1[18].title_answer + "'><label> c." + data1[18].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer10'id='page1' value='" + data1[19].title_answer + "'><label> D." + data1[19].title_answer + "</label><br><br>"
+                        + "</div > ",
+                    ]; // Danh sách các trang phần II
+                    pages2 = [
+                        "<div id='question2'><h4>Phân III: Khoa học máy tính</h4><br><br>"
+                        + "<h4 > Câu hỏi 1: " + data2[0].title + "</h4 > "
+                        + "<input type='radio' name='answer11' id='page1' value='" + data2[0].title_answer + "'><label> A." + data2[0].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer11'id='page1' value='" + data2[1].title_answer + "'><label> B." + data2[1].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer11'id='page1' value='" + data2[2].title_answer + "'><label> c." + data2[2].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer11' id='page1'value='" + data2[3].title_answer + "'><label> D." + data2[3].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 2: " + data2[4].title + "</h4 > "
+                        + "<input type='radio' name='answer12'id='page1' value='" + data2[4].title_answer + "'><label> A." + data2[4].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer12' id='page1'value='" + data2[5].title_answer + "'><label> B." + data2[5].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer12' id='page1'value='" + data2[6].title_answer + "'><label> c." + data2[6].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer12' id='page1'value='" + data2[7].title_answer + "'><label> D." + data2[7].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 3: " + data2[8].title + "</h4 > "
+                        + "<input type='radio' name='answer13' id='page1'value='" + data2[8].title_answer + "'><label> A." + data2[8].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer13'id='page1' value='" + data2[9].title_answer + "'><label> B." + data2[9].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer13'id='page1' value='" + data2[10].title_answer + "'><label> c." + data2[10].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer13'id='page1' value='" + data2[11].title_answer + "'><label> D." + data2[11].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 4: " + data2[12].title + "</h4 > "
+                        + "<input type='radio' name='answer14'id='page1' value='" + data2[12].title_answer + "'><label> A." + data2[12].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer14'id='page1' value='" + data2[13].title_answer + "'><label> B." + data2[13].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer14'id='page1' value='" + data2[14].title_answer + "'><label> c." + data2[14].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer14'id='page1' value='" + data2[15].title_answer + "'><label> D." + data2[15].title_answer + "</label><br><br>"
+
+                        + "<h4 > Câu hỏi 5: " + data2[16].title + "</h4 > "
+                        + "<input type='radio' name='answer15'id='page1' value='" + data2[16].title_answer + "'><label> A." + data2[16].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer15'id='page1' value='" + data2[17].title_answer + "'><label> B." + data2[17].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer15'id='page1' value='" + data2[18].title_answer + "'><label> c." + data2[18].title_answer + "</label><br><br>"
+                        + " <input type='radio' name='answer15'id='page1' value='" + data2[19].title_answer + "'><label> D." + data2[19].title_answer + "</label><br><br>"
+                        + "</div > ",
+                    ];  // Danh sách các trang phần III
+                } else if (data3[0].status == 0) {
+                    // trường hợp Candidate đó đã làm bài test xong và làm chỉ làm bài test được 1 lần duy nhất
+                    //<i class="fa-solid fa-check"></i>
+                    var page1Question1Html = "<div id='question2'><h4>Phân I: Kiến thức chung</h4><br><br>"
+                        + "<h4 > Câu hỏi 1: " + data[0].title + "</h4 > ";
+                        //Câu hỏi 1 (0 -> 3)
+                    if (data[0].is_correct === 1 ) {
+                        page1Question1Html += "<label> A." + data[0].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[0] == data[0].title_answer) {
+                        page1Question1Html += "<label> C." + data[0].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> A." + data[0].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[1].is_correct === 1) {
+                        page1Question1Html += "<label> B." + data[1].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[0] == data[1].title_answer) {
+                        page1Question1Html += "<label> C." + data[1].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+
+                    }
+                    else {
+                        page1Question1Html += "<label> B." + data[1].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[2].is_correct === 1) {
+                        page1Question1Html += "<label> C." + data[2].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[0] == data[2].title_answer) {
+                        page1Question1Html += "<label> C." + data[2].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+
+                    }
+                    else {
+                        page1Question1Html += "<label> C." + data[2].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[3].is_correct === 1) {
+                        page1Question1Html += "<label> D." + data[3].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[0] == data[3].title_answer) {
+                        page1Question1Html += "<label> C." + data[3].title_answer +  " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+
+                    }
+                    else {
+                        page1Question1Html += "<label> D." + data[3].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 2 (4 -> 7) data4[1]
+                    page1Question1Html += "<h4 > Câu hỏi 2: " + data[4].title + "</h4 > ";
+                    if (data[4].is_correct === 1) {
+                        page1Question1Html += "<label> A." + data[4].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[1] == data[4].title_answer) {
+                        page1Question1Html += "<label> C." + data[4].title_answer + "  <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> A." + data[4].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[5].is_correct === 1) {
+                        page1Question1Html += "<label> B." + data[5].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[1] == data[5].title_answer) {
+                        page1Question1Html += "<label> C." + data[5].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> B." + data[5].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[6].is_correct === 1) {
+                        page1Question1Html += "<label> C." + data[6].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[1] == data[6].title_answer) {
+                        page1Question1Html += "<label> C." + data[6].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> C." + data[6].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[7].is_correct === 1) {
+                        page1Question1Html += "<label> D." + data[7].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[1] == data[7].title_answer) {
+                        page1Question1Html += "<label> C." + data[7].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> D." + data[7].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 3 (8 -> 11)
+                    page1Question1Html += "<h4 > Câu hỏi 3: " + data[8].title + "</h4 > ";
+                    if (data[8].is_correct === 1) {
+                        page1Question1Html += "<label> A." + data[8].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[2] == data[8].title_answer) {
+                        page1Question1Html += "<label> C." + data[8].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> A." + data[8].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[9].is_correct === 1) {
+                        page1Question1Html += "<label> B." + data[9].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[2] == data[9].title_answer) {
+                        page1Question1Html += "<label> C." + data[9].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> B." + data[9].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[10].is_correct === 1) {
+                        page1Question1Html += "<label> C." + data[10].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[2] == data[10].title_answer) {
+                        page1Question1Html += "<label> C." + data[10].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> C." + data[10].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[11].is_correct === 1) {
+                        page1Question1Html += "<label> D." + data[11].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[2] == data[11].title_answer) {
+                        page1Question1Html += "<label> D." + data[11].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> D." + data[11].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 4 (12 -> 15)
+                    page1Question1Html += "<h4 > Câu hỏi 4: " + data[12].title + "</h4 > ";
+                    if (data[12].is_correct === 1) {
+                        page1Question1Html += "<label> A." + data[12].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[3] == data[12].title_answer) {
+                        page1Question1Html += "<label> C." + data[12].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> A." + data[12].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[13].is_correct === 1) {
+                        page1Question1Html += "<label> B." + data[13].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[3] == data[13].title_answer) {
+                        page1Question1Html += "<label> C." + data[13].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> B." + data[13].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[14].is_correct === 1) {
+                        page1Question1Html += "<label> C." + data[14].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[3] == data[14].title_answer) {
+                        page1Question1Html += "<label> C." + data[14].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> C." + data[14].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[15].is_correct === 1) {
+                        page1Question1Html += "<label> D." + data[15].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[3] == data[15].title_answer) {
+                        page1Question1Html += "<label> D." + data[15].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> D." + data[15].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 5 (16 -> 19)
+                    page1Question1Html += "<h4 > Câu hỏi 5: " + data[16].title + "</h4 > ";
+                    if (data[16].is_correct === 1) {
+                        page1Question1Html += "<label> A." + data[16].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[4] == data[16].title_answer) {
+                        page1Question1Html += "<label> A." + data[16].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> A." + data[16].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[17].is_correct === 1) {
+                        page1Question1Html += "<label> B." + data[17].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[4] == data[17].title_answer) {
+                        page1Question1Html += "<label> C." + data[17].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> B." + data[17].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[18].is_correct === 1) {
+                        page1Question1Html += "<label> C." + data[18].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[4] == data[18].title_answer) {
+                        page1Question1Html += "<label> C." + data[18].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> C." + data[18].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data[19].is_correct === 1) {
+                        page1Question1Html += "<label> D." + data[19].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[4] == data[19].title_answer) {
+                        page1Question1Html += "<label> D." + data[19].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page1Question1Html += "<label> D." + data[19].title_answer + "</label><br><br>";
+                    }
+
+                    //Page II Toan hoc ---------------------------------------------------------------------
+                    var page2Question2Html = "<div id='question2'><h4>Phân II: Toán học</h4><br><br>"
+                        + "<h4 > Câu hỏi 1: " + data1[0].title + "</h4 > ";
+                    //Câu hỏi 1 (0 -> 3)
+                    if (data1[0].is_correct === 1) {
+                        page2Question2Html += "<label> A." + data1[0].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[5] == data1[0].title_answer) {
+                        page2Question2Html += "<label> A." + data1[0].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> A." + data1[0].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[1].is_correct === 1) {
+                        page2Question2Html += "<label> B." + data1[1].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[5] == data1[1].title_answer) {
+                        page2Question2Html += "<label> B." + data1[1].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+
+                    }
+                    else {
+                        page2Question2Html += "<label> B." + data[1].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[2].is_correct === 1) {
+                        page2Question2Html += "<label> C." + data1[2].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[5] == data1[2].title_answer) {
+                        page2Question2Html += "<label> C." + data1[2].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> C." + data1[2].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[3].is_correct === 1) {
+                        page2Question2Html += "<label> D." + data1[3].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[5] == data1[3].title_answer) {
+                        page2Question2Html += "<label> C." + data1[3].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+
+                    }
+                    else {
+                        page2Question2Html += "<label> D." + data1[3].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 2 (4 -> 7) data4[1]
+                    page2Question2Html += "<h4 > Câu hỏi 2: " + data[4].title + "</h4 > ";
+                    if (data1[4].is_correct === 1) {
+                        page2Question2Html += "<label> A." + data1[4].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[6] == data1[4].title_answer) {
+                        page2Question2Html += "<label> C." + data1[4].title_answer + "  <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> A." + data1[4].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[5].is_correct === 1) {
+                        page2Question2Html += "<label> B." + data1[5].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[6] == data1[5].title_answer) {
+                        page2Question2Html += "<label> B." + data1[5].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> B." + data1[5].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[6].is_correct === 1) {
+                        page2Question2Html += "<label> C." + data1[6].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[6] == data1[6].title_answer) {
+                        page2Question2Html += "<label> C." + data1[6].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> C." + data1[6].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[7].is_correct === 1) {
+                        page2Question2Html += "<label> D." + data1[7].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[6] == data1[7].title_answer) {
+                        page2Question2Html += "<label> D." + data1[7].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> D." + data1[7].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 3 (8 -> 11)
+                    page2Question2Html += "<h4 > Câu hỏi 3: " + data[8].title + "</h4 > ";
+                    if (data1[8].is_correct === 1) {
+                        page2Question2Html += "<label> A." + data1[8].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[7] == data1[8].title_answer) {
+                        page2Question2Html += "<label> A." + data1[8].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> A." + data1[8].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[9].is_correct === 1) {
+                        page2Question2Html += "<label> B." + data1[9].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[7] == data1[9].title_answer) {
+                        page2Question2Html += "<label> B." + data1[9].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> B." + data1[9].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[10].is_correct === 1) {
+                        page2Question2Html += "<label> C." + data1[10].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[7] == data1[10].title_answer) {
+                        page2Question2Html += "<label> C." + data1[10].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> C." + data1[10].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[11].is_correct === 1) {
+                        page2Question2Html += "<label> D." + data1[11].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[7] == data1[11].title_answer) {
+                        page2Question2Html += "<label> D." + data1[11].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> D." + data1[11].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 4 (12 -> 15)
+                    page2Question2Html += "<h4 > Câu hỏi 4: " + data1[12].title + "</h4 > ";
+                    if (data1[12].is_correct === 1) {
+                        page2Question2Html += "<label> A." + data1[12].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[8] == data1[12].title_answer) {
+                        page2Question2Html += "<label> A." + data1[12].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> A." + data1[12].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[13].is_correct === 1) {
+                        page2Question2Html += "<label> B." + data1[13].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[8] == data1[13].title_answer) {
+                        page2Question2Html += "<label> B." + data1[13].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> B." + data1[13].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[14].is_correct === 1) {
+                        page2Question2Html += "<label> C." + data1[14].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[8] == data1[14].title_answer) {
+                        page2Question2Html += "<label> C." + data1[14].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> C." + data1[14].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[15].is_correct === 1) {
+                        page2Question2Html += "<label> D." + data1[15].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[8] == data1[15].title_answer) {
+                        page2Question2Html += "<label> D." + data1[15].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> D." + data1[15].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 5 (16 -> 19)
+                    page2Question2Html += "<h4 > Câu hỏi 5: " + data1[16].title + "</h4 > ";
+                    if (data1[16].is_correct === 1) {
+                        page2Question2Html += "<label> A." + data1[16].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[9] == data1[16].title_answer) {
+                        page2Question2Html += "<label> A." + data1[16].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> A." + data1[16].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[17].is_correct === 1) {
+                        page2Question2Html += "<label> B." + data1[17].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[9] == data1[17].title_answer) {
+                        page2Question2Html += "<label> B." + data1[17].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> B." + data1[17].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[18].is_correct === 1) {
+                        page2Question2Html += "<label> C." + data1[18].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[9] == data1[18].title_answer) {
+                        page2Question2Html += "<label> C." + data1[18].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> C." + data1[18].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data1[19].is_correct === 1) {
+                        page2Question2Html += "<label> D." + data1[19].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[9] == data1[19].title_answer) {
+                        page2Question2Html += "<label> D." + data1[1].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page2Question2Html += "<label> D." + data1[19].title_answer + "</label><br><br>";
+                    }
+
+                    //Page III Máy tính ---------------------------------------------------------------------
+                    var page3Question3Html = "<div id='question2'><h4>Phân III: Máy tính</h4><br><br>"
+                        + "<h4 > Câu hỏi 1: " + data2[0].title + "</h4 > ";
+                    //Câu hỏi 1 (0 -> 3)
+                    if (data2[0].is_correct === 1) {
+                        page3Question3Html += "<label> A." + data2[0].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[10] == data2[0].title_answer) {
+                        page3Question3Html += "<label> A." + data2[0].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<label> A." + data2[0].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[1].is_correct === 1) {
+                        page3Question3Html += "<label> B." + data2[1].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[10] == data2[1].title_answer) {
+                        page3Question3Html += "<label> B." + data2[1].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+
+                    }
+                    else {
+                        page3Question3Html += "<label> B." + data2[1].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[2].is_correct === 1) {
+                        page3Question3Html += "<label> C." + data2[2].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[10] == data2[2].title_answer) {
+                        page3Question3Html += "<label> C." + data2[2].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<label> C." + data2[2].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[3].is_correct === 1) {
+                        page3Question3Html += "<label> D." + data2[3].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[10] == data2[3].title_answer) {
+                        page3Question3Html += "<label> D." + data2[3].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<label> D." + data2[3].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 2 (4 -> 7) data4[1]
+                    page3Question3Html += "<h4 > Câu hỏi 2: " + data[4].title + "</h4 > ";
+                    if (data2[4].is_correct === 1) {
+                        page3Question3Html += "<label> A." + data2[4].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[11] == data2[4].title_answer) {
+                        page3Question3Html += "<label> C." + data2[4].title_answer + "  <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<label> A." + data2[4].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[5].is_correct === 1) {
+                        page3Question3Html += "<label> B." + data2[5].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[11] == data2[5].title_answer) {
+                        page3Question3Html += "<label> C." + data2[5].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio' name='answer1' id='page1' value='" + data2[5].title_answer + "'><label> B." + data2[5].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[6].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[6].title_answer + "' checked><label> C." + data2[6].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[11] == data2[6].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[6].title_answer + "' checked><label> C." + data2[6].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio' name='answer1' id='page1' value='" + data2[6].title_answer + "'><label> C." + data2[6].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[7].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[7].title_answer + "' checked><label> D." + data2[7].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[11] == data2[7].title_answer) {
+                        page2Question2Html += "<input type='radio' id='page1' value='" + data2[7].title_answer + "' checked><label> C." + data2[7].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[7].title_answer + "'><label> D." + data2[7].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 3 (8 -> 11)
+                    page3Question3Html += "<h4 > Câu hỏi 3: " + data2[8].title + "</h4 > ";
+                    if (data2[8].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[8].title_answer + "' checked><label> A." + data2[8].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[12] == data2[8].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[8].title_answer + "' checked><label> C." + data2[8].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio' name='answer1' id='page1' value='" + data2[8].title_answer + "'><label> A." + data2[8].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[9].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[9].title_answer + "' checked><label> B." + data2[9].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[12] == data2[9].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[9].title_answer + "' checked><label> C." + data2[9].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio' name='answer1' id='page1' value='" + data2[9].title_answer + "'><label> B." + data2[9].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[10].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[10].title_answer + "' checked><label> C." + data2[10].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[12] == data2[10].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[10].title_answer + "' checked><label> C." + data2[10].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio' name='answer1' id='page1' value='" + data2[10].title_answer + "'><label> C." + data2[10].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[11].is_correct === 1) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[11].title_answer + "' checked><label> D." + data2[11].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[12] == data2[11].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[11].title_answer + "' checked><label> C." + data2[11].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio' name='answer1' id='page1' value='" + data2[11].title_answer + "'><label> D." + data2[11].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 4 (12 -> 15)
+                    page3Question3Html += "<h4 > Câu hỏi 4: " + data2[12].title + "</h4 > ";
+                    if (data2[12].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[12].title_answer + "' checked><label> A." + data2[12].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[13] == data2[12].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[12].title_answer + "' checked><label> C." + data2[12].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio' name='answer1' id='page1' value='" + data2[12].title_answer + "'><label> A." + data2[12].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[13].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[13].title_answer + "' checked><label> B." + data2[13].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[13] == data2[13].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[13].title_answer + "' checked><label> C." + data2[13].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio' name='answer1' id='page1' value='" + data2[13].title_answer + "'><label> B." + data2[13].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[14].is_correct === 1) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[14].title_answer + "' checked><label> C." + data2[14].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[13] == data1[14].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[14].title_answer + "' checked><label> C." + data2[14].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[14].title_answer + "'><label> C." + data2[14].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[15].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[15].title_answer + "' checked><label> D." + data2[15].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[13] == data2[15].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[15].title_answer + "' checked><label> C." + data2[15].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[15].title_answer + "'><label> D." + data2[15].title_answer + "</label><br><br>";
+                    }
+                    //Câu hỏi 5 (16 -> 19)
+                    page3Question3Html += "<h4 > Câu hỏi 5: " + data2[16].title + "</h4 > ";
+                    if (data2[16].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  value='" + data2[16].title_answer + "' checked><label> A." + data2[16].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[14] == data2[16].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[16].title_answer + "' checked><label> C." + data2[16].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio'   value='" + data2[16].title_answer + "'><label> A." + data2[16].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[17].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[17].title_answer + "' checked><label> B." + data2[17].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[14] == data2[17].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[17].title_answer + "' checked><label> C." + data2[17].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[17].title_answer + "'><label> B." + data2[17].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[18].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[18].title_answer + "' checked><label> C." + data2[18].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[14] == data2[18].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[18].title_answer + "' checked><label> C." + data2[18].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[18].title_answer + "'><label> C." + data2[18].title_answer + "</label><br><br>";
+                    }
+                    ///
+                    if (data2[19].is_correct === 1) {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[19].title_answer + "' checked><label> D." + data2[19].title_answer + " <i class='fa-solid fa-check' style='color:green'></i></label><br><br>";
+                    }
+                    else if (data4[14] == data2[19].title_answer) {
+                        page3Question3Html += "<input type='radio' id='page1' value='" + data2[19].title_answer + "' checked><label> C." + data2[1].title_answer + " <i class='fa-solid fa-x' style='color:red'></i></label><br><br>";
+                    }
+                    else {
+                        page3Question3Html += "<input type='radio'  id='page1' value='" + data2[19].title_answer + "'><label> D." + data2[19].title_answer + "</label><br><br>";
+                    }
+
+                    pages = [
+                        page1Question1Html,
+                    ]; // Danh sách các trang phần I
+                    pages1 = [
+                        page2Question2Html,
+                    ]; // Danh sách các trang phần II
+                    pages2 = [
+                        page3Question3Html,
+                    ];  // Danh sách các trang phần III
+                    navigateToPage(currentPage);
+                    navigateToPage1(currentPage1);
+                    navigateToPage2(currentPage2);
+
+
+                }
+
+
+
+
+
+            }
+        });
+
+        // Hàm để chuyển đổi giữa các trang
+        function navigateToPage(pageIndex) {
+            currentPage = pageIndex;
+            if (data3[0].status == 1) {
+                // Hiển thịnút "Back" khi không phải là trang đầu tiên
+                if (currentPage > 0) {
+                    document.getElementById("backButton").style.display = "block";
+
+                } else {
+                    document.getElementById("backButton").style.display = "none";
+                }
+
+                // Hiển thị nút "Next" khi không phải là trang cuối cùng
+                if (currentPage < pages.length - 1) {
+                    document.getElementById("nextButton").style.display = "block";
+                    document.getElementById("pageContent").innerHTML = pages[currentPage];
+                } else {
+                    document.getElementById("nextButton").style.display = "none";
+
+                }
+
+                // Hiển thị nút "Send" khi là trang cuối cùng
+                if (currentPage === pages.length - 1) {
+                    document.getElementById("sendButton").style.display = "block";
+                    document.getElementById("nextButton").style.display = "none";
+
+                } else {
+                    document.getElementById("sendButton").style.display = "none";
+
+                }
+                document.getElementById("pageContent").innerHTML = pages[currentPage];
+            } else {
+                document.getElementById("pageContent").innerHTML = pages[currentPage];
+            }
+
+            // Hiển thị nội dung của trang hiện tại
+
+        }
+        function navigateToPage1(pageIndex1) {
+            currentPage1 = pageIndex1;
+            if (data3[0].status == 1) {
+                document.getElementById("pageContent").innerHTML = "";
+                if (document.getElementById("backButton").style.display = "none") {
+
+                    if (currentPage1 > 0) {
+                        document.getElementById("backButton1").style.display = "block";
+                    } else {
+                        document.getElementById("backButton1").style.display = "none";
+                    }
+
+                    // Hiển thị nút "Next" khi không phải là trang cuối cùng
+                    if (currentPage1 < pages1.length - 1) {
+                        document.getElementById("nextButton1").style.display = "block";
+                    } else {
+                        document.getElementById("nextButton1").style.display = "none";
+                    }
+
+                    // Hiển thị nút "Send" khi là trang cuối cùng
+                    if (currentPage1 === pages1.length - 1) {
+                        document.getElementById("sendButton1").style.display = "block";
+
+                    } else {
+                        document.getElementById("sendButton1").style.display = "none";
+                    }
+                    document.getElementById("pageContent1").innerHTML = pages1[currentPage1];
+
+                }
+            } else {
+                document.getElementById("pageContent1").innerHTML = pages1[currentPage1];
+
+            }
+            // Hiển thịnút "Back" khi không phải là trang đầu tiên
+
+
+
+            // Hiển thị nội dung của trang hiện tại
+        }
+
+        function navigateToPage2(pageIndex2) {
+            currentPage2 = pageIndex2;
+            // Hiển thịnút "Back" khi không phải là trang đầu tiên
+
+            if (data3[0].status == 1) {
+                document.getElementById("pageContent1").innerHTML = "";
+                if (document.getElementById("backButton1").style.display = "none") {
+
+                    if (currentPage2 > 0) {
+                        document.getElementById("backButton2").style.display = "block";
+                    } else {
+                        document.getElementById("backButton2").style.display = "none";
+                    }
+
+                    // Hiển thị nút "Next" khi không phải là trang cuối cùng
+                    if (currentPage2 < pages2.length - 1) {
+                        document.getElementById("nextButton2").style.display = "block";
+                    } else {
+                        document.getElementById("nextButton2").style.display = "none";
+                    }
+
+                    // Hiển thị nút "Send" khi là trang cuối cùng
+                    if (currentPage2 === pages2.length - 1) {
+                        document.getElementById("sendButton2").style.display = "block";
+
+                    } else {
+                        document.getElementById("sendButton2").style.display = "none";
+                    }
+                    document.getElementById("pageContent2").innerHTML = pages2[currentPage2];
+
+                }
+            } else {
+                document.getElementById("pageContent2").innerHTML = pages2[currentPage2];
+            }
+
+
+
+            // Hiển thị nội dung của trang hiện tại
+        }
+
+        // Hàm để chuyển đến trang tiếp theo
+        function nextPage() {
+            if (currentPage < pages.length - 1) {
+
+                navigateToPage(currentPage + 1);
+
+            }
+        }
+        function nextPage1() {
+            if (currentPage1 < pages1.length - 1) {
+                navigateToPage1(currentPage1 + 1);
+            }
+            navigateToPage1(currentPage1);
+        }
+        function nextPage2() {
+            if (currentPage2 < pages2.length - 1) {
+                navigateToPage2(currentPage2 + 1);
+            }
+        }
+        //sự kiện click ô checkbox
+        // Lưu giá trị vào biến answers
+        $(document).ready(function () {
+            var timeExpired = false;
+            var timerInterval;
+
+            $(document).on('click', 'input[type="radio"][id="page1"]', function () {
+                // Xử lý sự kiện click ô radio ở đây
+                // Lấy giá trị của ô radio được chọn
+                var value = $(this).val();
+                console.log(value);
+                // Lấy tên của ô radio được chọn
+                var name = $(this).attr('name');
+                // Thêm giá trị vào mảng answers
+                answers[name] = value;
+                // In mảng answers ra để kiểm tra
+                console.log("heelo")
+                console.log(answers);
+            });
+
+            //Button Send
+            document.getElementById("sendButton").addEventListener("click", function () {
+
+
+                console.log("yes");
+                //-------->Show diaglog
+
+                if (Object.keys(answers).length === 5) {
+                    var overlay = document.createElement('div');
+                    overlay.classList.add('dialog-overlay');
+                    overlay.addEventListener('click', function () {
+                        document.body.removeChild(overlay);
+                    });
+
+                    var dialog = document.createElement('div');
+                    dialog.classList.add('dialog-content');
+                    var content = "<div>"
+                        + "<h4>Bạn có chắc chắn không ?</h4><br>"
+                        + " <button type='button' id='buttonConfirm'>Confrim</button> <button type='button' id='buttonCancel'>Cancel</button></div > ";
+                    var contentDiv = document.createElement('div');
+                    contentDiv.innerHTML = content;
+                    dialog.appendChild(contentDiv);
+                    overlay.appendChild(dialog);
+                    document.body.appendChild(overlay);
+                } else {
+
+                    var overlay = document.createElement('div');
+                    overlay.classList.add('dialog-overlay1');
+                    overlay.addEventListener('click', function () {
+                        document.body.removeChild(overlay);
+                    });
+                    var dialog = document.createElement('div');
+                    dialog.classList.add('dialog-content1');
+                    var content = "<div>"
+                        + "<h4>Bạn cần phải chọn đủ câu trả lời?</h4><br>"
+                    var contentDiv = document.createElement('div');
+                    contentDiv.innerHTML = content;
+                    dialog.appendChild(contentDiv);
+                    overlay.appendChild(dialog);
+                    document.body.appendChild(overlay);
+                }
+
+            });
+            $(document).on('click', 'button[type="button"][id="buttonConfirm"]', function () {
+
+                document.getElementById("sendButton").style.display = "none";
+                document.getElementById("nextButton").style.display = "none";
+                document.getElementById("backButton").style.display = "none";
+                document.getElementById("pageContent").innerHTML = "";
+                // Hiện nút "Next1"
+                document.getElementById("nextButton1").style.display = "block";
+                navigateToPage1(currentPage1);
+
+            });
+            $(document).on('click', 'button[type="button"][id="buttonCancel"]', function () {
+                $('.dialog-overlay').remove();
+            });
+            ///////////////////////////////////////////////////////////////////////////////////
+            //Button Send1
+            document.getElementById("sendButton1").addEventListener("click", function () {
+                // Ẩn nút "Send"
+                //document.getElementById("sendButton1").style.display = "none";
+                //document.getElementById("nextButton1").style.display = "none";
+                //document.getElementById("backButton1").style.display = "none";
+                //document.getElementById("pageContent1").innerHTML = "";
+                //// Hiện nút "Next1"
+                //document.getElementById("nextButton2").style.display = "block";
+                //navigateToPage2(currentPage2);
+
+                if (Object.keys(answers).length === 10) {
+                    var overlay = document.createElement('div');
+                    overlay.classList.add('dialog-overlay2');
+                    overlay.addEventListener('click', function () {
+                        document.body.removeChild(overlay);
+                    });
+
+                    var dialog = document.createElement('div');
+                    dialog.classList.add('dialog-content2');
+                    var content = "<div>"
+                        + "<h4>Bạn có chắc chắn không ?</h4><br>"
+                        + " <button type='button' id='buttonConfirm1'>Confrim1</button> <button type='button' id='buttonCancel1'>Cancel1</button></div > ";
+                    var contentDiv = document.createElement('div');
+                    contentDiv.innerHTML = content;
+                    dialog.appendChild(contentDiv);
+                    overlay.appendChild(dialog);
+                    document.body.appendChild(overlay);
+                } else {
+
+                    var overlay = document.createElement('div');
+                    overlay.classList.add('dialog-overlay3');
+                    overlay.addEventListener('click', function () {
+                        document.body.removeChild(overlay);
+                    });
+                    var dialog = document.createElement('div');
+                    dialog.classList.add('dialog-content1');
+                    var content = "<div>"
+                        + "<h4>Bạn cần phải chọn đủ câu trả lời1?</h4><br>"
+                    var contentDiv = document.createElement('div');
+                    contentDiv.innerHTML = content;
+                    dialog.appendChild(contentDiv);
+                    overlay.appendChild(dialog);
+                    document.body.appendChild(overlay);
+                }
+            });
+            $(document).on('click', 'button[type="button"][id="buttonConfirm1"]', function () {
+                document.getElementById("sendButton1").style.display = "none";
+                document.getElementById("nextButton1").style.display = "none";
+                document.getElementById("backButton1").style.display = "none";
+                document.getElementById("pageContent1").innerHTML = "";
+                // Hiện nút "Next1"
+                document.getElementById("nextButton2").style.display = "block";
+                navigateToPage2(currentPage2);
+            });
+            $(document).on('click', 'button[type="button"][id="buttonCancel1"]', function () {
+                $('.dialog-overlay2').remove();
+            });
+
+            ////////////////////////////////////////////////////////////////////////////////////
+
+
+
+            //Button Send2--Khoa học máy tính
+            document.getElementById("sendButton2").addEventListener("click", function () {
+
+                if (Object.keys(answers).length === 15) {
+                    var overlay = document.createElement('div');
+                    overlay.classList.add('dialog-overlay4');
+                    overlay.addEventListener('click', function () {
+                        document.body.removeChild(overlay);
+                    });
+
+                    var dialog = document.createElement('div');
+                    dialog.classList.add('dialog-content2');
+                    var content = "<div>"
+                        + "<h4>Bạn có chắc chắn không ?</h4><br>"
+                        + " <button type='button' id='buttonConfirm2'>Confrim2</button> <button type='button' id='buttonCancel2'>Cancel2</button></div > ";
+                    var contentDiv = document.createElement('div');
+                    contentDiv.innerHTML = content;
+                    dialog.appendChild(contentDiv);
+                    overlay.appendChild(dialog);
+                    document.body.appendChild(overlay);
+                } else {
+                    var overlay = document.createElement('div');
+                    overlay.classList.add('dialog-overlay5');
+                    overlay.addEventListener('click', function () {
+                        document.body.removeChild(overlay);
+                    });
+                    var dialog = document.createElement('div');
+                    dialog.classList.add('dialog-content1');
+                    var content = "<div>"
+                        + "<h4>Bạn cần phải chọn đủ câu trả lời1?</h4><br>"
+                    var contentDiv = document.createElement('div');
+                    contentDiv.innerHTML = content;
+                    dialog.appendChild(contentDiv);
+                    overlay.appendChild(dialog);
+                    document.body.appendChild(overlay);
+                }
+            });
+            $(document).on('click', 'button[type="button"][id="buttonConfirm2"]', function () {
+                document.getElementById("sendButton2").style.display = "none";
+                document.getElementById("nextButton2").style.display = "none";
+                document.getElementById("backButton2").style.display = "none";
+                document.getElementById("pageContent2").innerHTML = "";
+                // Ngừng đếm giờ
+                clearInterval(timerInterval);
+                document.getElementById("SubmitButton").style.display = "block";
+            });
+            $(document).on('click', 'button[type="button"][id="buttonCancel2"]', function () {
+                $('.dialog-overlay4').remove();
+            });
+            //////////////////////////////////////////////////////////////////////////////
+            document.getElementById("startButton").addEventListener("click", function () {
+                // Ẩn nút "Send"
+                document.getElementById("startButton").style.display = "none";
+                // Hiện nút "Next1"
+                document.getElementById("nextButton").style.display = "block";
+                document.getElementById("pageContentView").innerHTML = "";
+                navigateToPage(currentPage);
+
+                console.log("start timer")
+
+                ///
+                var timerElement = document.getElementById('timer');
+                var targetTime = new Date().getTime() + 600000; // Thời gian đích là hiện tại + 10 phút (600000 milliseconds)
+                // Hàm cập nhật thời gian đếm giờ
+                function updateTimer() {
+                    var currentTime = new Date().getTime();
+                    var timeDifference = targetTime - currentTime;
+
+                    // Tính toán giờ, phút và giây từ thời gian còn lại
+                    var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                    // Định dạng thời gian thành chuỗi hh:mm:ss
+                    var formattedTime = ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2);
+
+                    // Hiển thị thời gian đếm giờ trong phần tử HTML
+                    timerElement.textContent = formattedTime;
+
+                    // Kiểm tra nếu thời gian đã hết, dừng đếm giờ
+                    if (timeDifference <= 0) {
+                        clearInterval(timerInterval);
+                        timerElement.textContent = 'Hết thời gian!';
+                        stopTimerAndDisablePages();
+                        //Gửi dữ liệu về xử lý C#
+                        document.getElementById("SubmitButton").style.display = "block";
+
+                    }
+                }
+
+                // Cập nhật thời gian ban đầu
+                updateTimer();
+
+                // Cập nhật thời gian mỗi giây
+                timerInterval = setInterval(updateTimer, 1000);
+
+            });
+            document.getElementById("SubmitButton").addEventListener("click", function () {
+
+                var answersArray = Object.values(answers);
+                $.ajax({
+                    url: '/Home/ProcessAnswers',
+                    type: 'POST',
+                    data: { answers: answersArray },
+                    success: function (response) {
+                        // Xử lý kết quả trả về từ server (nếu cần)
+                        console.log("ket qua cadidate");
+                        window.location.href = '/Home/ResultCadi';
+                    }
+                });
+
+            });
+            // Ngừng đếm giờ và vô hiệu hóa các trang con
+            function stopTimerAndDisablePages() {
+                // Vô hiệu hóa các trang con bằng cách ẩn nút gửi và các nút điều hướng
+                document.getElementById("sendButton").style.display = "none";
+                document.getElementById("nextButton").style.display = "none";
+                document.getElementById("backButton").style.display = "none";
+                document.getElementById("pageContent").innerHTML = "";
+                document.getElementById("nextButton1").style.display = "none";
+                document.getElementById("backButton1").style.display = "none";
+                document.getElementById("pageContent1").innerHTML = "";
+                document.getElementById("nextButton2").style.display = "none";
+                document.getElementById("backButton2").style.display = "none";
+                document.getElementById("pageContent2").innerHTML = "";
+            }
+        });
+
+
+        // Khởi tạo trang đầu tiên
+
+    </script>
+    <!-- Template Javascript -->
+    <script src="~/Content/Assets/Client/js/main.js"></script>
 </body>
+
 </html>
