@@ -11,5 +11,9 @@ namespace Sem3Final.Models.Repositories
         {
 
         }
+        public void tq()
+        {
+
+        }
     }
 }
