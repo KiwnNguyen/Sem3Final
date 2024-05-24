@@ -21,7 +21,11 @@ namespace AccpSem3.Models.Repository
                 return instance;
             } 
         }
-
+        public AnswerView t()
+        {
+            AnswerView t = new AnswerView();
+            return t;
+        }
         public List<AnswerView> GetAll()
         {
             try
