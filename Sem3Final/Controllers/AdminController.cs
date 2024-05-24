@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Sem3Final.Controllers
 {
+    [Authorize(Roles = "ADMIN")]
     public class AdminController : Controller
     {
         // GET: Admin
