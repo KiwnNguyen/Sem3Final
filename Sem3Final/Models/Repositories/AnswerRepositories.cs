@@ -8,20 +8,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AccpSem3.Models.Repository
+namespace Sem3Final.Models.Repository
 {
     public class AnswerRepositories
     {
         private static AnswerRepositories instance = null;
-        private AnswerRepositories() { }    
-        public static AnswerRepositories Instance {  get {
+        private AnswerRepositories() { }
+        public static AnswerRepositories Instance
+        {
+            get
+            {
 
                 if (instance == null)
                 {
                     instance = new AnswerRepositories();
                 }
                 return instance;
-            } 
+            }
         }
         public AnswerView t()
         {
@@ -33,7 +36,7 @@ namespace AccpSem3.Models.Repository
             try
             {
                 dbSem3Entities entities = new dbSem3Entities();
-                var q = entities.Answers.Select(d => new AnswerView {id = d.id , title = d.title ,id_question = d.id_question,is_correct = d.is_correct,created_at = d.created_at , updated_at = d.updated_at} ).ToList();
+                var q = entities.Answers.Select(d => new AnswerView { id = d.id, title = d.title, id_question = d.id_question, is_correct = d.is_correct, created_at = d.created_at, updated_at = d.updated_at }).ToList();
                 return q;
             }
             catch (Exception e)
@@ -41,7 +44,7 @@ namespace AccpSem3.Models.Repository
                 throw e;
             }
             return null;
-        
+
         }
         public IEnumerable<QuestionJoin> GetListAnswerQuestionCategory()
         {
@@ -113,6 +116,31 @@ namespace AccpSem3.Models.Repository
                 var answerViews = q.Select(Answers => new AnswerView
                 {
                     id = Answers.id,
+                    id_question = Answers.id_question,
+                    is_correct = Answers.is_correct,
+                    created_at = Answers.created_at,
+                    updated_at = Answers.updated_at
+                }).ToList();
+                return answerViews;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return null;
+        }
+        public List<AnswerView> GetByAnswer(int id1)
+        {
+            try
+            {
+
+                dbSem3Entities entities = new dbSem3Entities();
+                var q = entities.Answers.Where(y => y.id_question == id1).ToList();
+
+                var answerViews = q.Select(Answers => new AnswerView
+                {
+                    id = Answers.id,
+                    title = Answers.title,
                     id_question = Answers.id_question,
                     is_correct = Answers.is_correct,
                     created_at = Answers.created_at,

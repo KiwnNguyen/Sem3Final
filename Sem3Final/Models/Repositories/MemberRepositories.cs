@@ -22,19 +22,63 @@ namespace Sem3Final.Models.Repositories
                 return _instance;
             }
         }
-        public void UpdateCv(MemberView model)
+        public List<MemberView> GetById(int? id)
         {
-            if (model != null)
+            try
             {
-                dbSem3Entities entities = new dbSem3Entities();
-                var q = entities.Members.Find(model.id);
-                if (q != null)
+                if (id != null)
                 {
-                    q.cv = model.cv;
-                    entities.SaveChanges();
+                    dbSem3Entities entities = new dbSem3Entities();
+                    var q = entities.Members.Where(y => y.id == id).ToList();
+                    if (q != null)
+                    {
+                        var member1 = q.Select(mem => new MemberView
+                        {
+                            id = mem.id,
+                            email = mem.email,
+                            education_details = mem.education_details,
+                            cv = mem.cv,
+                            fullname = mem.fullname,
+                            work_experience = mem.work_experience,
+                            personal_detail = mem.personal_details,
+                            phone = mem.phone,
+                            status = mem.status,
+                        });
+
+                        return member1.ToList();
+                    }
+
                 }
 
             }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return null;
+        }
+        public void UpdateCv(MemberView model)
+        {
+            try
+            {
+                if (model != null)
+                {
+                    dbSem3Entities entities = new dbSem3Entities();
+                    var q = entities.Members.Find(model.id);
+                    if (q != null)
+                    {
+                        q.cv = model.cv;
+
+                        entities.SaveChanges();
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
         }
         public MemberView GetEmailMembers(string email)
         {
@@ -65,6 +109,38 @@ namespace Sem3Final.Models.Repositories
                 throw e;
             }
             return null;
+        }
+        public int UpdateStatusMem(int id)
+        {
+            try
+            {
+                if (id != null)
+                {
+                    dbSem3Entities entities = new dbSem3Entities();
+                    var q = entities.Members.Find(id);
+                    if (q != null)
+                    {
+                        if (q.status == 1)
+                        {
+                            q.status = 0;
+                            entities.SaveChanges();
+                            return 1;
+                        }
+                        if (q.status == 0)
+                        {
+                            q.status = 1;
+                            entities.SaveChanges();
+                            return 1;
+                        }
+
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return 0;
         }
     }
 }

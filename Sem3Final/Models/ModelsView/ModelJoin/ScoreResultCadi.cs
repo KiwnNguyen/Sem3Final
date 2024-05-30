@@ -8,6 +8,7 @@ namespace Sem3Final.Models.ModelsView.ModelJoin
 {
     public class ScoreResultCadi
     {
+        public Member member { get; set; }
         public Cadidate cadidate { get; set; }
         public Vacancy vacancy { get; set; }
         public Examination examination { get; set; }

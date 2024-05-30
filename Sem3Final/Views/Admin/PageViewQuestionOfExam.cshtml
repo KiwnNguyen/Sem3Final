@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "PageViewQuestionOfExam";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<Sem3Final.Models.ModelsView.ModelJoin.QuesAndExam> ls = new List<Sem3Final.Models.ModelsView.ModelJoin.QuesAndExam>();
+    if (ViewBag.DetailsQuesofExa != null)
+    {
+        ls = ViewBag.DetailsQuesofExa;
+    }
+
+
+}
+
+<main class="content-wrapper">
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card p-0">
+                    <h6 class="card-title card-padding pb-0">Examine Details</h6>
+                    <div class="table-responsive">
+                        <table class="table table-hoverable">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Question</th>
+                                    <th>View Answer</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int index = 0;
+                                    int num = 1;
+                                }
+
+                                @foreach (Sem3Final.Models.ModelsView.ModelJoin.QuesAndExam item in ls)
+                                {
+
+                                    <tr>
+                                        <td>@index</td>
+                                        <td>Question @num: @item.question.title</td>
+                                        <td>
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="GetIdAnswer(@item.question.id)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+                                                    <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5z" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    num++;
+                                    index++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Answer Of Question</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="content_new"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+
+
+

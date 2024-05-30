@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "ViewQuantityCandidate";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<Sem3Final.Models.ModelsView.ModelJoin.ScoreResultCadi> ls = new List<Sem3Final.Models.ModelsView.ModelJoin.ScoreResultCadi>();
+    if (ViewBag.QuantityCandidate != null)
+    {
+        ls = ViewBag.QuantityCandidate;
+    }
+    int index = 1;
+}
+
+<main class="content-wrapper">
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card p-2">
+                    <h6 class="card-title card-padding pb-0">Department Detail</h6>
+                    <div class="table-responsive">
+                        <table class="table table-hoverable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th style="text-align: center">Full Name</th>
+                                    <th style="text-align: center">Email</th>
+                                    <th style="text-align: center">Concern Person</th>
+                                    <th style="text-align: center">Create Date</th>
+                                    <th style="text-align: center">Update Date</th>
+                                    <th style="text-align: center">View Details</th>
+                                    <th style="text-align: center">Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Sem3Final.Models.ModelsView.ModelJoin.ScoreResultCadi item in ls)
+                                {
+                                    <tr>
+                                        <td>@index</td>
+                                        <td style="text-align: center">@item.member.fullname</td>
+                                        <td style="text-align: center">@item.member.email</td>
+                                        <td>@item.cadidate.concern_person</td>
+                                        <td style="text-align: center">@item.vacancy.created_at</td>
+                                        <td style="text-align: center">@item.vacancy.updated_at</td>
+                                        <td style="text-align: center">
+                                            <a class="button-with-icon" id="" href="@Url.Action("PageDetailMember","Admin",new {id = item.cadidate.id_member})">
+                                                <i class="fa-regular fa-eye"></i> <!-- Biểu tượng cho trạng thái Bật -->
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="button-with-icon" id="" href="@Url.Action("PageUpdateCadi","Admin",new {id = item.cadidate.id})">
+                                                <i class="fa-solid fa-pen-to-square"></i> <!-- Biểu tượng cho trạng thái Bật -->
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    index++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <dialog id="myDialog">
+                        <div id="dialog-content"></div>
+                        <button onclick="closeDialog()">Close</button>
+                    </dialog>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+

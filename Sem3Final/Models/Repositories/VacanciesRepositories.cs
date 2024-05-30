@@ -137,5 +137,35 @@ namespace Sem3Final.Models.Repositories
 
             }
         }
+        public void UpdateStatusVan(int id, string num)
+        {
+            try
+            {
+                if (id != null && num != null)
+                {
+                    dbSem3Entities entities = new dbSem3Entities();
+                    var q = entities.Vacancies.Find(id);
+                    if (q != null)
+                    {
+                        if (num.Equals("open"))
+                        {
+                            q.status = num;
+                            entities.SaveChanges();
+                        }
+                        else
+                        {
+                            q.status = num;
+                            entities.SaveChanges();
+                        }
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
     }
 }

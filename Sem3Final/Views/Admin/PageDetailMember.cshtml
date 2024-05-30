@@ -1,0 +1,208 @@
+﻿
+@{
+    ViewBag.Title = "PageDetailMember";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<AccpSem3.Models.ModeView.MemberView> ls = new List<AccpSem3.Models.ModeView.MemberView>();
+    List<AccpSem3.Models.ModeView.CadidateView> ls1 = new List<AccpSem3.Models.ModeView.CadidateView>();
+    if (ViewBag.MemberDetail != null)
+    {
+        ls = ViewBag.MemberDetail;
+    }
+    if (ViewBag.CandiDetail != null)
+    {
+        ls1 = ViewBag.CandiDetail;
+    }
+}
+
+
+<main class="content-wrapper">
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card p-2">
+                    <h6 class="card-title card-padding pb-0">Personal Information Details</h6>
+                    <div class="table-responsive">
+                        <table class="table table-hoverable">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center">Email</th>
+                                    <th>Full Name</th>
+                                    <th>Education</th>
+                                    <th>Person Details</th>
+                                    <th>Work Experience</th>
+                                    <th>Phone</th>
+                                    <th>CV</th>
+                                    <th>Status</th>
+                                    <th style="text-align: center">Button</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (AccpSem3.Models.ModeView.MemberView item in ls)
+                                {
+                                    <tr>
+                                        <td style="text-align: center">@item.email</td>
+                                        <td>@item.fullname</td>
+                                        <td>@item.education_details</td>
+                                        <td>@item.personal_detail</td>
+                                        <td style="text-align: center">@item.work_experience</td>
+                                        <td>@item.phone</td>
+                                        <td style="text-align: center">
+                                            <input value="@item.cv" id="cv_cadi" name="cv_" style="display: none" />
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="updateIframeSrc()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+                                                    <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5z" />
+                                                </svg>
+                                            </button>
+
+                                        </td>
+                                        <td style="text-align: center">
+                                            @if (item.status == 1)
+                                            {
+                                                <p><b>Online</b></p>
+                                            }
+                                            @if (item.status == 0)
+                                            {
+                                                <p><b>Offline</b></p>
+                                            }
+
+                                        </td>
+                                        <td style="text-align: center">
+                                            <a href="@Url.Action("UpdatestatusMem","Admin",new {id = @item.id})"><i class="fa-solid fa-power-off"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr class="" />
+                    <h6 class="card-title card-padding pb-0">Confirm Provide Test For Cadidate</h6>
+                    <div class="table-responsive">
+                        <table class="table table-hoverable">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center">STT</th>
+                                    <th style="text-align: center">Status</th>
+                                    <th style="text-align: center">Provider Test</th>
+                                    <th style="text-align: center">Refused</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (AccpSem3.Models.ModeView.CadidateView item in ls1)
+                                {
+                                    <tr>
+                                        <td style="text-align: center">#</td>
+                                        <td style="text-align: center">
+                                            @if (item.status == 5)
+                                            {
+                                                <p>Đã lên lịch</p>
+                                            }
+                                            @if (item.status == 4)
+                                            {
+                                                <p>Đang xử lý</p>
+                                            }
+                                            @if (item.status == 3)
+                                            {
+                                                <p>Cho làm bài test</p>
+                                            }
+                                            @if (item.status == 2)
+                                            {
+                                                <p>Không cho làm bài test</p>
+                                            }
+                                            @if (item.status == 1)
+                                            {
+                                                <p>Chưa hoàn thành</p>
+                                            }
+                                            @if (item.status == 0)
+                                            {
+                                                <p>Đã hoàn thành</p>
+                                            }
+                                        </td>
+                                        <td style="text-align: center">
+                                            @if (item.status == 4)
+                                            {
+                                                <input type="text" name="" id="id_cadi1" value="@item.id" style="display: none" />
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="" onclick="SendidCadi()">Create Account</button>
+
+                                            }
+                                            @if (item.status != 4)
+                                            {
+                                                <button type="button" class="btn btn-primary" disabled>Create Account</button>
+
+                                            }
+                                        </td>
+                                        <td style="text-align: center">
+                                            @if (item.status == 4)
+                                            {
+                                                <a style="font-size:16px" class="btn btn-primary" id="" href="@Url.Action("ActionRefused","Admin",new {id = item.id})">
+                                                    <i class="fa-solid fa-xmark"></i><!-- Biểu tượng cho trạng thái Bật -->
+                                                </a>
+                                            }
+
+
+                                            @if (item.status != 4)
+                                            {
+                                                <button style="font-size:16px" class="btn btn-primary" disabled>
+                                                    <i class="fa-solid fa-xmark"></i><!-- Biểu tượng cho trạng thái Bật -->
+                                                </button>
+                                            }
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">CV Cadidate</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <iframe id="cv-iframe" src="" width="465" height="500"></iframe>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal1 -->
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Create Account Cadidate</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="/Admin/ProvideAccountCadi" method="post">
+                                    <div class="modal-body">
+                                        <input type="text" name="id_mem" id="id_cadi2" value="" style="display:none" />
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">username:</label>
+                                            <input type="text" class="form-control" id="recipient-name" name="username">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">password:</label>
+                                            <input type="text" class="form-control" id="recipient-name" name="password">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Send message</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>

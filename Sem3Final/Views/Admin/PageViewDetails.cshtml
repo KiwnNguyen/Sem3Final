@@ -42,18 +42,27 @@
                                                 <i class="fa-solid fa-audio-description"></i>
                                             </button>
                                         </td>
-                                        <td>@item.quantity_emp</td>
-                                        <td>  <a href="@Url.Action("PageViewDetailExa","Admin",new {id = item.id_examination})"><i class="fas fa-eye"></i></a></td>
-                                        <td>  <a href="@Url.Action("PageViewDetailDepart","Admin",new {id = item.id_dep})"><i class="fas fa-eye"></i></a></td>
-                                        <td>@item.salary</td>
-                                        <td>@item.dateline</td>
-                                        <td>
+                                        <td style="text-align: center">@item.quantity_emp</td>
+                                        <td style="text-align: center">  <a href="@Url.Action("PageViewDetailExa","Admin",new {id = item.id_examination})"><i class="fas fa-eye"></i></a></td>
+                                        <td style="text-align: center">  <a href="@Url.Action("PageViewDetailDepart","Admin",new {id = item.id_dep})"><i class="fas fa-eye"></i></a></td>
+                                        <td style="text-align: center">@item.salary</td>
+                                        <td style="text-align: center">@item.dateline</td>
+                                        <td style="text-align: center">
                                             <input value="@item.jobnature" id="cv_cadi1_@index" name="cv_" style="display: none" />
                                             <button class="btn btn-primary" type="button" onclick="openDialog1(@index)">
                                                 View Details
                                             </button>
                                         </td>
-                                        <td>@item.featured</td>
+                                        <td style="text-align: center">
+                                            @if (@item.featured == 1)
+                                            {
+                                                <p style="color:mediumpurple"><b>Nỗi bật</b> </p>
+                                            }
+                                            else
+                                            {
+                                                <p style="color:lime"><b>Không nổi bật</b></p>
+                                            }
+                                        </td>
                                     </tr>
                                 }
                             </tbody>
@@ -65,6 +74,4 @@
         </div>
     </div>
 </main>
-
-
 

@@ -1,6 +1,6 @@
-﻿using AccpSem3.Models.Repository;
+﻿using Sem3Final.Models.Repository;
 using Newtonsoft.Json.Linq;
-using Sem3Final.Models.Linear;
+using Sem3Final.Models;
 using Sem3Final.Models.ModelsView.ModelJoin;
 using Sem3Final.Models.ModelsView;
 using Sem3Final.Models.Repositories;
@@ -10,6 +10,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Sem3Final.Models.Linear;
+using Sem3Final.Models.Encryption;
 
 namespace Sem3Final.Controllers
 {
@@ -19,6 +21,11 @@ namespace Sem3Final.Controllers
         {
             return View();
         }
+        public ActionResult Page404()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult RegisterAccount(MemberView model)
         {
@@ -32,6 +39,12 @@ namespace Sem3Final.Controllers
                     model.updated_at = DateTime.Now;
                     model.images = null;
                     model.cv = null;
+                    //Encryption Passwork
+                    string pass = model.password;
+                    //string passEncrypt = PasswordHasher.HashPassword(pass);
+                    string passEncrypt = PasswordHasher1.EncodePasswordToBase64(pass);
+                    model.password = passEncrypt;
+
                     var userRepository = UserRepositorty.Instance; // Tạo biến userRepository
                     var t = userRepository.InsertUser(model);
                     if (t > 0)
@@ -50,14 +63,31 @@ namespace Sem3Final.Controllers
             }
             return RedirectToAction("PageLogin", "Login");
         }
-        public ActionResult Page404()
-        {
-            return View();
-        }
         [Authorize(Roles = "CADIDATE")]
         public ActionResult FormTestCadi()
         {
+            try
+            {
+                string id_Ca = HttpContext.Session["idCadi"] as string;
+                int id = int.Parse(id_Ca);
+                //HttpContext.Session["idStatusCadi"];
+                List<CadidateView> views = CandidateRepositories.Instance.GetByIdCadi(id);
+                if (views != null)
+                {
+                    int? status1 = 0;
+                    foreach (CadidateView item in views)
+                    {
+                        status1 = item.status;
+                    }
+                    string t = status1.ToString();
+                    HttpContext.Session["idStatusCadi"] = t.ToString();
 
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             return View();
         }
         [Authorize(Roles = "CADIDATE")]
@@ -102,6 +132,8 @@ namespace Sem3Final.Controllers
             }
             return View();
         }
+
+
         [HttpGet]
         public ActionResult GetData()
         {
@@ -353,7 +385,19 @@ namespace Sem3Final.Controllers
                 List<VacanciesView> responsitories = VacanciesRepositories.Instance.GetAll();
                 if (responsitories != null)
                 {
+                    string id = HttpContext.Session["IdAccountUser"] as string;
+                    int? id_mem = int.Parse(id);
+
+                    List<MemberView> members = MemberRepositories.Instance.GetById(id_mem);
+                    if (members != null)
+                    {
+                        foreach (MemberView item in members)
+                        {
+                            ViewBag.cv_test = item.cv;
+                        }
+                    }
                     ViewBag.Vancies = responsitories;
+
                 }
                 ViewBag.Email = HttpContext.Session["EmailAccountUser"];
                 return View(model);
@@ -380,8 +424,8 @@ namespace Sem3Final.Controllers
             {
                 if (model != null)
                 {
-                    string randomString = GenerateRandomString(8);
-                    string n1 = Path.GetFileName(randomString + "_" + link.FileName);//link cv -> file pdf
+                    //string randomString = GenerateRandomString(8);
+                    string n1 = Path.GetFileNameWithoutExtension(link.FileName) + Path.GetExtension(link.FileName);
                     string projectPath = Server.MapPath("~");
                     string filePath = Path.Combine(projectPath, "Content", "Assets", "Cv");
                     string resultPath = filePath + "\\" + n1;
@@ -392,17 +436,21 @@ namespace Sem3Final.Controllers
                         string idvan = Request.Params["idvan"];
 
                         string emailMem = Request.Params["email"];
+                        string concert_person = Request.Params["concert_person"];
                         string emailMem1 = HttpContext.Session["EmailAccountUser"] as string;
 
                         MemberView modelMem = MemberRepositories.Instance.GetEmailMembers(emailMem);
                         model.id_member = modelMem.id;
                         model.id_vacancy = int.Parse(idvan);
+                        //model.concern_person = concert_person;
                         CandidateRepositories.Instance.SubmitSendInfo(model);
                         //Update CV
                         MemberView ModelMember = new MemberView();
                         ModelMember.cv = n1;
                         ModelMember.id = modelMem.id;
                         MemberRepositories.Instance.UpdateCv(ModelMember);
+                        ViewBag.Info = "Nộp thành công";
+                        return RedirectToAction("PageSendCv", "Home");
                     }
                 }
             }
@@ -410,7 +458,7 @@ namespace Sem3Final.Controllers
             {
                 throw e;
             }
-            return View();
+            return null;
         }
 
     }

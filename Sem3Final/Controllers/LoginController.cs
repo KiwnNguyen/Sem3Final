@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-
+using Sem3Final.Models.Encryption;
 using Sem3Final.Models.Entities;
 using Sem3Final.Models.ModelsView;
+using Sem3Final.Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +30,12 @@ namespace Sem3Final.Controllers
                 if (User.IsInRole("USER"))
                 {
                     string r = returnUrl;
-                    if (r.Equals("/Admin/Index"))
+                    if (r != null)
                     {
-                        return RedirectToAction("Page404", "Home");
+                        if (r.Equals("/Admin/Index"))
+                        {
+                            return RedirectToAction("Page404", "Home");
+                        }
                     }
                 }
             }
@@ -85,32 +89,47 @@ namespace Sem3Final.Controllers
             // Xử lý logic xác thực người dùng
             string username = Request.Params["Email"];
             string password = Request.Params["Pass"];
+
+
+            //string password = Models.Encryption.PasswordHasher.HashPassword(pass);
+
+            string t1 = "";
             try
             {
                 dbSem3Entities product = new dbSem3Entities();
                 //if (ModelState.IsValid)
                 if (username != null && password != null)
                 {
-                    var loginInfo = product.Members.Where(x => x.email == username && x.password == password)
+                    //Search email for Member
+                    var loginInfo = product.Members.Where(x => x.email == username)
                         .ToList();
-
+                    //Search email for Admin
                     var loginInfoAdmin = product.Admins.Where(y => y.email == username && y.password == password)
                         .ToList();
-
-                    var loginInfoCadidate = product.Cadidates.Where(y => y.username == username && y.password == password)
+                    //Search email for Cadidate
+                    var loginInfoCadidate = product.Cadidates.Where(z => z.username == username)
                         .ToList();
                     if (loginInfo != null && loginInfo.Count() > 0)
                     {
                         var logindetails = loginInfo.First();
-                        string role1 = "USER";
-                        HttpContext.Session["AccountName"] = logindetails.email;
-                        HttpContext.Session["ImageAccount"] = logindetails.images;
-                        HttpContext.Session["IdAccountUser"] = logindetails.id;
-                        HttpContext.Session["EmailAccountUser"] = logindetails.email;
+                        string hashedPassword = logindetails.password;
+                        //passwordHasher1
+                        string DecodePass = PasswordHasher1.DecodeFrom64(logindetails.password);
+                        if (password.Equals(DecodePass))
+                        {
 
-                        this.SignInUser(logindetails.email, false, role1);
-                        returnUrl = "/Home/Index";
-                        return this.RedirectToLocal(returnUrl);
+                            string role1 = "USER";
+                            HttpContext.Session["AccountName"] = logindetails.email;
+                            HttpContext.Session["ImageAccount"] = logindetails.images;
+                            string id = logindetails.id.ToString();
+                            HttpContext.Session["IdAccountUser"] = id;
+                            HttpContext.Session["EmailAccountUser"] = logindetails.email;
+
+
+                            this.SignInUser(logindetails.email, false, role1);
+                            returnUrl = "/Home/Index";
+                            return this.RedirectToLocal(returnUrl);
+                        }
                     }
                     else if (loginInfoAdmin != null && loginInfoAdmin.Count() > 0)
                     {
@@ -125,12 +144,30 @@ namespace Sem3Final.Controllers
                     else if (loginInfoCadidate != null && loginInfoCadidate.Count() > 0)
                     {
                         var logindetalsCadidate = loginInfoCadidate.First();
-                        string role1 = "CADIDATE";
-                        HttpContext.Session["AccountNameCadidate"] = logindetalsCadidate.username;
-                        HttpContext.Session["idStatusCadi"] = logindetalsCadidate.status;
-                        this.SignInUser(logindetalsCadidate.username, false, role1);
-                        returnUrl = "/Home/Index";
-                        return this.RedirectToLocal(returnUrl);
+                        string DecoderPass = PasswordHasher1.DecodeFrom64(logindetalsCadidate.password);
+                        if (DecoderPass.Equals(password))
+                        {
+                            string role1 = "CADIDATE";
+                            HttpContext.Session["AccountNameCadidate"] = logindetalsCadidate.username;
+
+                            List<CadidateView> ls = CandidateRepositories.Instance.GetByIdCadi(logindetalsCadidate.id);
+                            int? status_t = 0;
+                            int id_cadi = 0;
+                            foreach (CadidateView item in ls)
+                            {
+                                status_t = item.status;
+                                id_cadi = item.id;
+                            }
+                            if (status_t == 3)
+                            {
+                                CandidateRepositories.Instance.StatusCadiOne(id_cadi);
+                            }
+                            string id_stats = logindetalsCadidate.id.ToString();
+                            HttpContext.Session["idCadi"] = id_stats;
+                            this.SignInUser(logindetalsCadidate.username, false, role1);
+                            returnUrl = "/Home/Index";
+                            return this.RedirectToLocal(returnUrl);
+                        }
                     }
                     else
                     {

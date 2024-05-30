@@ -9,15 +9,17 @@
         ls = ViewBag.Vanciest;
     }
     int index = 1;
-}
 
+
+
+}
 <main class="content-wrapper">
     <div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner">
 
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                 <div class="mdc-card p-0">
-                    <h6 class="card-title card-padding pb-0" style="text-align: center">Vancacies Table</h6>
+                    <h5 class="card-title card-padding pb-0" style="text-align: center">Business about vacancies</h5>
                     <a class="mdc-button mdc-button--raise filled-button--warning" href="@Url.Action("PageAddVancacies","Admin")">Add Vancacies <i class="material-icons">add</i></a>
                     <div class="table-responsive">
                         <table class="table table-hoverable">
@@ -26,6 +28,7 @@
                                     <th class="text-left">STT</th>
                                     <th>Name</th>
                                     <th>Status</th>
+                                    <th>Quantity People</th>
                                     <th>Create date</th>
                                     <th>Update date</th>
                                     <th>View Details</th>
@@ -37,47 +40,139 @@
                                 @foreach (Sem3Final.Models.ModelsView.VacanciesView item in ls)
                                 {
                                     <tr>
-                                        <td class="text-left">@index</td>
-                                        <td>@item.name</td>
+                                        <td class="text-left">
+                                            @if (item.status == "open" || @item.status == "lock")
+                                            {
+                                                <p>@index</p>
+                                            }
+                                            @if (item.status == "close")
+                                            {
+                                                <p id="ViewDetailsVan">@index</p>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.status == "open" || @item.status == "lock")
+                                            {
+                                                <p>@item.name</p>
+                                            }
+                                            @if (item.status == "close")
+                                            {
+                                                <p id="ViewDetailsVan">@item.name</p>
+                                            }
+                                        </td>
                                         <td>
                                             @if (@item.status == "open")
                                             {
-                                                <p style="color: green">Open</p>
+                                                <p style="color: green"><b>open</b></p>
+                                            }
+                                            @if (@item.status == "lock")
+                                            {
+                                                <p style="color:gray"><b>lock</b></p>
                                             }
                                             @if (@item.status == "close")
                                             {
-                                                <p style="color: red">Close</p>
+                                                <p style="color: red" id="ViewDetailsVan"><b>close</b></p>
+                                            }
+                                        </td>
+                                        <td style="text-align: center">
+                                            @if (@item.status == "open")
+                                            {
+                                                <a href="@Url.Action("ViewQuantityCandidate","Admin",new {id_van = item.id})"><i class="fa-solid fa-person" style="font-size: 25px; color:black"></i></a>
+                                            }
+                                            @if (@item.status == "lock")
+                                            {
+                                                <a href="@Url.Action("ViewQuantityCandidate","Admin",new {id_van = item.id})"><i class="fa-solid fa-person" style="font-size: 25px; color:black"></i></a>
+                                            }
+                                            @if (@item.status == "close")
+                                            {
+                                                <a href="" id="ViewDetailsVan"><i class="fa-solid fa-person" style="font-size: 25px; color:black"></i></a>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (@item.status == "open" || @item.status == "lock")
+                                            {
+                                                <p>@item.created_at</p>
+                                            }
+                                            @if (@item.status == "close")
+                                            {
+                                                <p id="ViewDetailsVan">@item.created_at</p>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (@item.status == "open" || @item.status == "lock")
+                                            {
+                                                <p>@item.updated_at</p>
+                                            }
+                                            @if (@item.status == "close")
+                                            {
+                                                <p id="ViewDetailsVan">@item.updated_at</p>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.status.Equals("open"))
+                                            {
+                                                <a href="@Url.Action("PageViewDetails","Admin",new {id = item.id})"><i class="fas fa-eye"></i></a>
+
+                                            }
+                                            @if (item.status.Equals("lock"))
+                                            {
+                                                <a href="@Url.Action("PageViewDetails","Admin",new {id = item.id})"><i class="fas fa-eye"></i></a>
+
+                                            }
+                                            @if (item.status.Equals("close"))
+                                            {
+                                                <a href="" id="ViewDetailsVan"><i class="fas fa-eye"></i></a>
+
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.status.Equals("open"))
+                                            {
+                                                <a class="button-with-icon" id="" href="@Url.Action("PageUpdateVancies","Admin",new {id = item.id})">
+                                                    <i class="fa-solid fa-pen-to-square"></i> <!-- Biểu tượng cho trạng thái Bật -->
+                                                </a>
+                                            }
+                                            @if (item.status.Equals("close"))
+                                            {
+                                                <a class="button-with-icon" id="ViewDetailsVan" href="">
+                                                    <i class="fa-solid fa-pen-to-square"></i> <!-- Biểu tượng cho trạng thái Bật -->
+                                                </a>
+                                            }
+                                            @if (item.status.Equals("lock"))
+                                            {
+                                                <a class="button-with-icon" id="" href="@Url.Action("PageUpdateVancies","Admin",new {id = item.id})">
+                                                    <i class="fa-solid fa-pen-to-square"></i> <!-- Biểu tượng cho trạng thái Bật -->
+                                                </a>
                                             }
 
-                                        </td>
-                                        <td>@item.created_at</td>
-                                        <td>@item.updated_at</td>
-                                        <td>
-                                            <a href="@Url.Action("PageViewDetails","Admin",new {id = item.id})"><i class="fas fa-eye"></i></a>
-                                        </td>
-                                        <td>
-                                            <a class="button-with-icon" id="" href="@Url.Action("PageUpdateVancies","Admin",new {id = item.id})">
-                                                <i class="fa-solid fa-pen-to-square"></i> <!-- Biểu tượng cho trạng thái Bật -->
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <form action="/Admin/UpdateStatusVan" method="post">
-                                                <input value="@item.id" name="id_vanca" style="display:none" id="id1" />
-                                                <input value="@item.status" name="sta_van" style="display:none" id="status1" />
-                                                <button class="button-with-icon" id="submitButton">
-                                                    @if (item.status == "open")
-                                                    {
 
-                                                        <i class="fas fa-power-off power-on"></i> <!-- Biểu tượng cho trạng thái Bật -->
-                                                    }
-                                                    @if (item.status == "close")
-                                                    {
-                                                        <i class="fas fa-power-off power-off"></i> <!-- Biểu tượng cho trạng thái Tắt -->
-                                                    }
-                                                </button>
-                                            </form>
+                                        </td>
+                                        <td>
+                                            @if (item.status == "open")
+                                            {
+                                                <a class="button-with-icon" id="" href="@Url.Action("ChangerStatusVan","Admin",new {id = item.id, num = "close"})">
+                                                    <i class="fas fa-power-off power-on"></i> <!-- Biểu tượng cho trạng thái Bật -->
+                                                </a>
+                                                <!-- Biểu tượng cho trạng thái Bật -->
+                                            }
+                                            @if (item.status == "close")
+                                            {
+                                                <a class="button-with-icon" id="" href="@Url.Action("ChangerStatusVan","Admin",new {id = item.id, num ="open"})">
+                                                    <i class="fas fa-power-off power-off"></i> <!-- Biểu tượng cho trạng thái Bật -->
+                                                </a><!-- Biểu tượng cho trạng thái Tắt -->
+                                            }
+                                            @if (item.status == "lock")
+                                            {
+                                                <a class="button-with-icon" id="ViewDetailsVan">
+                                                    <i class="fas fa-power-off power-off"></i> <!-- Biểu tượng cho trạng thái Bật -->
+                                                </a><!-- Biểu tượng cho trạng thái Tắt -->
+                                            }
                                         </td>
                                     </tr>
+
+                                    index++;
+
+
                                 }
                             </tbody>
                         </table>
@@ -88,5 +183,4 @@
         </div>
     </div>
 </main>
-
 
