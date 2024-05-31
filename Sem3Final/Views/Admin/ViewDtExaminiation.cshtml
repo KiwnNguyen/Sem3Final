@@ -6,6 +6,7 @@
         public int positionGK { get; set; } = 0;
         public int positionM { get; set; } = 0;
         public int positionCT { get; set; } = 0;
+        public int idQuestion { get; set; } = 0;
     }
 }
 
@@ -99,7 +100,7 @@
                                                                             <span class="input-group-text" id="addon-wrapping">@c</span>
                                                                             <input type="text" id="qkqtexid+@c" value="@item.id" style="display:none" name="questionidlist" />
                                                                             <input type="text" class="form-control" value="@item.title" id="gkqtex+@c" disabled>
-                                                                            <span class="input-group-text" id="addon-wrapping"><button class="edit-questiongk-button" type="button" data-toggle="modal" data-target="#gkqtModal" onclick="ChangePosition(1, @c)">Edit question</button></span>
+                                                                            <span class="input-group-text" id="addon-wrapping"><button class="edit-questiongk-button dtqt" data-id="@item.id" type="button" data-toggle="modal" data-target="#questiondtModal">View question</button></span>                                                                            
                                                                         </div>
                                                                     </fieldset>
                                                                     c++;
@@ -127,7 +128,7 @@
                                                                             <span class="input-group-text" id="addon-wrapping">@c</span>
                                                                             <input type="text" id="mqtexid+@c" value="@item.id" style="display:none" name="questionidlist" />
                                                                             <input type="text" class="form-control" value="@item.title" id="mqtex+@c" disabled>
-                                                                            <span class="input-group-text" id="addon-wrapping"><button type="button" data-toggle="modal" data-target="#mqtModal" onclick="ChangePosition(2, @c)">Edit question</button></span>
+                                                                            <span class="input-group-text" id="addon-wrapping"><button type="button" class="dtqt" data-id="@item.id">View question</button></span>
                                                                         </div>
                                                                     </fieldset>
                                                                     c++;
@@ -144,7 +145,7 @@
                                                 <div class="container text-center">
                                                     <div class="row">
                                                         <div class="col-8">
-                                                            @if (true)
+                                                            @if (ViewBag.listqtct != null && ViewBag.listqtct.Count > 0)
                                                             {
                                                                 int c = 1;
                                                                 foreach (var item in ViewBag.listqtct)
@@ -155,13 +156,12 @@
                                                                             <span class="input-group-text" id="addon-wrapping">@c</span>
                                                                             <input type="text" id="ctqtexid+@c" value="@item.id" style="display:none" name="questionidlist" />
                                                                             <input type="text" class="form-control" value="@item.title" id="ctqtex+@c" disabled>
-                                                                            <span class="input-group-text" id="addon-wrapping"><button type="button" data-toggle="modal" data-target="#ctqtModal" onclick="ChangePosition(3, @c)">Edit question</button></span>
+                                                                            <span class="input-group-text" id="addon-wrapping"><button type="button" class="dtqt" data-id="@item.id">View question</button></span>                                                                                                                                                                                                                                        
                                                                         </div>
                                                                     </fieldset>
-                                                                    c++;
+                                                                        c++;
                                                                 }
-                                                            }
-
+                                                             }                                                            
 
                                                         </div>
                                                         <div class="col-4">
@@ -184,103 +184,8 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade bd-example-modal-lg" id="gkqtModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg   " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="ibox">
-                        <div class="ibox-head">
-                            <h2 class="ibox-title">List General Knowledge</h2>
-                        </div>
-                        <div class="ibox-body">
-                            <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Add</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if (true)
-                                    {
-                                        int c = 1;
-                                        foreach (var item in ViewBag.qtgk)
-                                        {
-                                            <tr>
-                                                <td style="display:none"><input type="text" name="qtgk1" value="@item.id" /></td>
-                                                <td>@item.title</td>
-                                                <td><button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Addquestion(1,positionGK,@item.id,`@item.title`)">ADD</button></td>
-                                            </tr>
-                                            c++;
-                                        }
-                                    }
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade bd-example-modal-lg" id="mqtModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg   " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="ibox">
-                        <div class="ibox-head">
-                            <h2 class="ibox-title">List Mathematics</h2>
-                        </div>
-                        <div class="ibox-body">
-                            <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th><a href="">ADD</a></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if (true)
-                                    {
-                                        int c = 1;
-                                        foreach (var item in ViewBag.qtm)
-                                        {
-                                            <tr>
-                                                <td style="display:none"><input type="text" name="mgk1" value="@item.id" /></td>
-                                                <td>@item.title</td>
-                                                <td><button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Addquestion(2,positionM,@item.id,`@item.title`)">ADD</button></td>
-                                            </tr>
-                                            c++;
-                                        }
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade bd-example-modal-lg" id="ctqtModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal -->    
+    <div class="modal fade bd-example-modal-lg" id="questiondtModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg   " role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -295,29 +200,7 @@
                             <h2 class="ibox-title">List Computer Technology</h2>
                         </div>
                         <div class="ibox-body">
-                            <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th><a href="">ADD</a></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if (true)
-                                    {
-                                        int c = 1;
-                                        foreach (var item in ViewBag.qtct)
-                                        {
-                                            <tr>
-                                                <td style="display:none"><input type="text" name="ctgk1" value="@item.id" /></td>
-                                                <td>@item.title</td>
-                                                <td><button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Addquestion(3,positionCT,@item.id,`@item.title`)">ADD</button></td>
-                                            </tr>
-                                            c++;
-                                        }
-                                    }
-                                </tbody>
-                            </table>
+
                         </div>
                     </div>
                 </div>
@@ -380,8 +263,12 @@
                 positionCT = newPosition;
             }
         }
+        
+        
 
 
     </script>
 }
+
+
 
