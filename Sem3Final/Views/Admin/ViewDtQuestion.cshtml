@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "ViewDtQuestion";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section head{
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .container {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        .question {
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+
+
+        .answers {
+            margin: 20px;
+        }
+
+
+            .answers label {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .answers input[type="radio"] {
+                margin-right: 5px;
+            }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+}
+
+<main class="content-wrapper">
+    <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+            <div class="mdc-card">
+                <div class="container">
+                    <div class="question">
+                        <form action="/admin/SaveEditQuestion/@ViewBag.qt.id" method="post">
+                            <div class="mdc-text-field mdc-text-field--outlined">
+                                <input type="text" name="title" class="mdc-text-field__input" id="text-field-hero-input" value="@ViewBag.qt.title">
+                                <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                        <label for="text-field-hero-input" class="mdc-floating-label">Title of question</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                            </div>
+                            <div class="template-demo">
+                                <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                                    <input type="hidden" name="enhanced-select-idcat">
+                                    <i class="mdc-select__dropdown-icon"></i>
+                                    @foreach (var item in ViewBag.catques)
+                                    {
+                                        if (ViewBag.qt.id_categoryofquestion == item.id)
+                                        {
+                                            <div class="mdc-select__selected-text" tabindex="0">@item.title</div>
+                                        }
+                                    }
+                                    <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                                        <ul class="mdc-list">
+                                            @foreach (var item in ViewBag.catques)
+                                            {
+                                                if (item.id == ViewBag.qt.id_categoryofquestion)
+                                                {
+                                                    <li class="mdc-list-item mdc-list-item--selected" data-value="@item.id">
+                                                        @item.title
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li class="mdc-list-item" data-value="@item.id">
+                                                        @item.title
+                                                    </li>
+                                                }
+
+                                            }
+
+
+                                        </ul>
+                                    </div>
+                                    <span class="mdc-floating-label">Category Of Question</span>
+                                    <div class="mdc-line-ripple"></div>
+                                </div>
+                            </div>
+
+                            <div class="answers">
+                                @if (ViewBag.answer != null)
+                                {
+                                    int counter = 0;
+                                    foreach (var item in ViewBag.answer)
+                                    {
+                                        if (item.is_correct == 1)
+                                        {
+                                            <label>
+                                                <input type="radio" name="iscorrect" value="@counter" checked="">
+                                                <input type="text" name="titleas" value="@item.title" />
+                                                <input type="hidden" name="idas" value="@item.id" />
+                                            </label>
+                                        }
+                                        else
+                                        {
+                                            <label>
+                                                <input type="radio" name="iscorrect" value="@counter">
+                                                <input type="text" name="titleas" value="@item.title" />
+                                                <input type="hidden" name="idas" value="@item.id" />
+                                            </label>
+                                        }
+                                        counter += 1;
+                                    }
+                                }
+
+
+                                @*<button id="add-option">Thêm tùy chọn</button>*@
+                                <button class="btn btn-primary" type="submit">SUBMIT</button>
+                            </div>
+                        </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+

@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbSem3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="255" />
+    <Property Name="status" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="id_question" Type="int" />
+    <Property Name="is_correct" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Cadidates">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_member" Type="int" />
+    <Property Name="id_vacancy" Type="int" />
+    <Property Name="concern_person" Type="nvarchar" MaxLength="255" />
+    <Property Name="status" Type="int" />
+    <Property Name="username" Type="nvarchar" MaxLength="255" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" />
+    <Property Name="score" Type="int" />
+    <Property Name="answer_of_cadidate" Type="text" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="submit_cadidate_cadidate" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="CategoryOfQuestion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" />
+    <Property Name="status" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dname" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Examination">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="255" />
+    <Property Name="cv" Type="text" />
+    <Property Name="education_details" Type="nvarchar" MaxLength="255" />
+    <Property Name="personal_details" Type="nvarchar" MaxLength="255" />
+    <Property Name="work_experience" Type="nvarchar" MaxLength="255" />
+    <Property Name="phone" Type="nvarchar" MaxLength="255" />
+    <Property Name="status" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="images" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="id_categoryofquestion" Type="int" />
+    <Property Name="status" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="QuestionOfExamination">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_question" Type="int" />
+    <Property Name="id_examination" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Vacancies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="description" Type="ntext" />
+    <Property Name="quantity_emp" Type="int" />
+    <Property Name="id_examination" Type="int" />
+    <Property Name="id_dep" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="255" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="salary" Type="nvarchar" MaxLength="255" />
+    <Property Name="dateline" Type="date" />
+    <Property Name="jobnature" Type="varchar" MaxLength="255" />
+    <Property Name="featured" Type="int" />
+  </EntityType>
+  <Association Name="FK__Answer__id_quest__4BAC3F29">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="id_question" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cadidates__id_me__4D94879B">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="Cadidates" Type="Self.Cadidates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cadidates">
+        <PropertyRef Name="id_member" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cadidates__id_va__4E88ABD4">
+    <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="0..1" />
+    <End Role="Cadidates" Type="Self.Cadidates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vacancies">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cadidates">
+        <PropertyRef Name="id_vacancy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Question__id_cat__4AB81AF0">
+    <End Role="CategoryOfQuestion" Type="Self.CategoryOfQuestion" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryOfQuestion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="id_categoryofquestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QuestionO__id_ex__49C3F6B7">
+    <End Role="Examination" Type="Self.Examination" Multiplicity="0..1" />
+    <End Role="QuestionOfExamination" Type="Self.QuestionOfExamination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Examination">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="QuestionOfExamination">
+        <PropertyRef Name="id_examination" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QuestionO__id_qu__4F7CD00D">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="QuestionOfExamination" Type="Self.QuestionOfExamination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="QuestionOfExamination">
+        <PropertyRef Name="id_question" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vacancies__id_de__4CA06362">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+    <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vacancies">
+        <PropertyRef Name="id_dep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vacancies__id_ex__48CFD27E">
+    <End Role="Examination" Type="Self.Examination" Multiplicity="0..1" />
+    <End Role="Vacancies" Type="Self.Vacancies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Examination">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Vacancies">
+        <PropertyRef Name="id_examination" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbSem3ModelStoreContainer">
+    <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cadidates" EntityType="Self.Cadidates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoryOfQuestion" EntityType="Self.CategoryOfQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Examination" EntityType="Self.Examination" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionOfExamination" EntityType="Self.QuestionOfExamination" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vacancies" EntityType="Self.Vacancies" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Answer__id_quest__4BAC3F29" Association="Self.FK__Answer__id_quest__4BAC3F29">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cadidates__id_me__4D94879B" Association="Self.FK__Cadidates__id_me__4D94879B">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Cadidates" EntitySet="Cadidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cadidates__id_va__4E88ABD4" Association="Self.FK__Cadidates__id_va__4E88ABD4">
+      <End Role="Vacancies" EntitySet="Vacancies" />
+      <End Role="Cadidates" EntitySet="Cadidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Question__id_cat__4AB81AF0" Association="Self.FK__Question__id_cat__4AB81AF0">
+      <End Role="CategoryOfQuestion" EntitySet="CategoryOfQuestion" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QuestionO__id_ex__49C3F6B7" Association="Self.FK__QuestionO__id_ex__49C3F6B7">
+      <End Role="Examination" EntitySet="Examination" />
+      <End Role="QuestionOfExamination" EntitySet="QuestionOfExamination" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QuestionO__id_qu__4F7CD00D" Association="Self.FK__QuestionO__id_qu__4F7CD00D">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="QuestionOfExamination" EntitySet="QuestionOfExamination" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vacancies__id_de__4CA06362" Association="Self.FK__Vacancies__id_de__4CA06362">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Vacancies" EntitySet="Vacancies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vacancies__id_ex__48CFD27E" Association="Self.FK__Vacancies__id_ex__48CFD27E">
+      <End Role="Examination" EntitySet="Examination" />
+      <End Role="Vacancies" EntitySet="Vacancies" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
